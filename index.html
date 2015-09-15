@@ -8,52 +8,11 @@
 		<meta name="description" content="css3,html5,requirejs,nodejs,angularjs personalPage" />
 		<meta name="keywords" content="css3,html5,requirejs,nodejs,angularjs personalPage" />
 		
+		<script type="text/javascript" src="js/lib/require.js" data-main="js/main.js"></script>
+		
 		<link rel="stylesheet" href="css/style.css" />
 	</head>
 	<body>
-		<section id="perspective" class="rotateLeft">
-			<section class="container">
-				<header class="container-header">
-					<h1>Say GoodBye To The Past</h1>
-					<span>不会后台的设计师不是好前端</span>
-				</header>
-				
-				<section class="main clearfix">
-					<div class="homebar">
-						<p>
-							<button>Wanna See More ?</button>
-						</p>
-						<p>
-							Welcome To My Personal Site
-						</p>
-					</div>
-					<div class="homebar">
-						<nav class="hometags">
-							<a>Font-End Developer</a>
-							<a>Cycling sports</a>
-							<a>Css3</a>
-							<a>Html5</a>
-							<a>RequireJs</a>
-							<a>NodeJs</a>
-							<a>AngularJs</a>
-						</nav>
-					</div>
-				</section>
-			</section>
-			
-			
-			<nav class="outer-nav right vertical">
-				<a href="#" class="icon-home">Home</a>
-				<a href="#" class="icon-news">Production</a>
-				<a href="#" class="icon-image">Images</a>
-				<a href="#" class="icon-star">Favorites</a>
-				<a href="#" class="icon-mail">Github</a>
-				<a href="#" class="icon-lock">Font-Tech</a>
-			</nav>
-			</nav>
-			<nav class="outer-nav left"></nav>
-			<nav class="outer-nav bottom circle"></nav>
-			<nav class="outer-nav right"></nav>
-		</section>
+		<div ng-view style="height: 100%;width: 100%;"></div>
 	</body>
 </html>
