@@ -20,7 +20,6 @@ requirejs.config({
 		"getRandom" : "service/getRandom",
 
 
-
 		'route' : "routes/routes",
 
 	},
