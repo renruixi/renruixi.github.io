@@ -26,10 +26,13 @@
 		
 			window.onhashchange=function(){
 				var pattern =/\w+$/g ;
+				var link = document.getElementById("hashchange")
 				var hash = location.hash.match(pattern);
 				if(hash !== null ){
 					hash = hash[0];
-					document.getElementById("hashchange").href="css/"+hash+".css";
+					link.href="css/"+hash+".css";
+				}else{
+					link.href = "css/home.css";
 				}
 			}			
 		</script>
