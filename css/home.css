@@ -293,6 +293,7 @@ a,a:hover{color:#333;}
 .rotateTop.animate .container {
     -webkit-transform: translateZ(-1500px) translateY(-50%) rotateX(-45deg);
     transform: translateZ(-1500px) translateY(-50%) rotateX(-45deg);
+    cursor: pointer;
 }
 
 .rotateTop .outer-nav a {
@@ -413,6 +414,7 @@ a,a:hover{color:#333;}
 .layDown.animate .container {
     -webkit-transform: translateZ(-1500px) rotateX(80deg);
     transform: translateZ(-1500px) rotateX(80deg);
+    cursor: pointer;
 }
 
 .layDown .outer-nav a {

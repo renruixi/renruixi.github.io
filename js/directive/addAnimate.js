@@ -14,7 +14,7 @@
  					$btn = $ele.find("button").eq(0);
 
 
-
+ 				//将click事件放在此处是为了 阻止冒泡
 				$btn.on("click",function(ev){
 					ev.stopPropagation();
 					$timeout(function(){
@@ -23,6 +23,7 @@
 				});
 
 				$container.on("click",function(){
+					//判断是否处在运动状态
 					if($ele.hasClass('animate')){
 						$ele.removeClass('animate');
 						$ele.on("webkitTransitionEnd",transEndEvent);
@@ -34,11 +35,15 @@
 
  				function transEndEvent(){
  					$ele.removeClass("animateView");
+
+ 					//向全局传播 class消除状态
  					scope.$apply(function(){
 						scope.rv =false;
 						scope.bh =false;
 						scope.th =false;
 					});
+
+					//每次transitionEnd事件结束后，取消该事件的绑定，避免下一次的End事件被监听
 					$ele.off("webkitTransitionEnd");
 					$ele.off("transitionEnd");
  				}

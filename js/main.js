@@ -10,14 +10,18 @@ requirejs.config({
 		'angular':"lib/angular.min",
 		'angular-route' : "lib/angular-route.min",
 		'jquery':'lib/jquery-1.11.3.min',
+
+		
+		"addAnimate" : "directive/addAnimate",
+		"getWidth" : "directive/getWidth",
+
+		"getRandom" : "service/getRandom",
+
+
 		"app":"controllers/app",
 
 		"homeCtrl" : "controllers/homeCtrl",
-
-
-		"addAnimate" : "directive/addAnimate",
-
-		"getRandom" : "service/getRandom",
+		"imgCtrl" : "controllers/imgCtrl",
 
 
 		'route' : "routes/routes",
@@ -39,7 +43,7 @@ requirejs.config({
 
 
 
-requirejs(["jquery","angular",'angular-route',"app","homeCtrl","addAnimate","getRandom","route"],function($,angular){
+requirejs(["jquery","angular",'angular-route',"app","route","homeCtrl","imgCtrl","addAnimate","getWidth","getRandom"],function($,angular){
 	$(function(){
 		angular.bootstrap(document,["myApp"]);
 	})

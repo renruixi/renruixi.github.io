@@ -9,8 +9,36 @@
 		<meta name="keywords" content="css3,html5,requirejs,nodejs,angularjs personalPage" />
 		
 		<script type="text/javascript" src="js/lib/require.js" data-main="js/main.js"></script>
+		<script>
+			
+			document.addEventListener("DOMContentLoaded",function(){
+				
+				var head = document.getElementsByTagName("head")[0],
+					link = head.getElementsByTagName("link");
+				if(link){
+					for(var i=0;i<link.length;i++){
+						head.removeChild(link[i])
+					}
+				}
+				var pattern =/\w+$/g ;
+				var hash = location.hash.match(pattern);
+				
+				if(hash === null ){
+					var link = document.createElement("link");
+					link.href = "css/home.css";
+					link.rel = "stylesheet";
+					document.getElementsByTagName("head")[0].appendChild(link);
+				}else{
+					hash = hash[0];
+					var link = document.createElement("link");
+					link.href = "css/"+hash+".css";
+					link.rel = "stylesheet";
+					document.getElementsByTagName("head")[0].appendChild(link);
+				}
+				
+			})
+		</script>
 		
-		<link rel="stylesheet" href="css/style.css" />
 	</head>
 	<body>
 		<div ng-view style="height: 100%;width: 100%;"></div>

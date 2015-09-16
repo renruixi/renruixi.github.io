@@ -8,6 +8,18 @@ define(["app"],function(app){
 				templateUrl:'tpl/home.html',
 				controller : "homeCtrl"
 			})
+			.when("/home",{
+				templateUrl:'tpl/home.html',
+				controller : "homeCtrl"
+			})
+			.when("/works",{
+				templateUrl : "tpl/works.html",
+				controller : "workCtrl"
+			})
+			.when("/images",{
+				templateUrl : "tpl/image.html",
+				controller : "imgCtrl"
+			})
 			.otherwise({redirectTo : "/"});
 
 			// $locationProvider.html5Mode(true);
@@ -15,25 +27,19 @@ define(["app"],function(app){
 
 
 });
-
-
-// .when("/works",{
-			// 	templateUrl : "",
-			// 	controller : "workCtrl"
-			// })
-			// .when("/favorites",{
-			// 	templateUrl:"",
-			// 	controller : "favCtrl"
-			// })
-			// .when("/image",{
-			// 	templateUrl : "",
-			// 	controller : "imgCtrl"
-			// })
-			// .when("/github",{
-			// 	templateUrl : "",
-			// 	controller : "gitCtrl"
-			// })
-			// .when("/fonttech",{
-			// 	templateUrl : "",
-			// 	controller : "techCtrl"
-			// })
+// .when("/favorites",{
+// 				templateUrl:"",
+// 				controller : "favCtrl"
+// 			})
+// 			.when("/image",{
+// 				templateUrl : "",
+// 				controller : "imgCtrl"
+// 			})
+// 			.when("/github",{
+// 				templateUrl : "",
+// 				controller : "gitCtrl"
+// 			})
+// 			.when("/fonttech",{
+// 				templateUrl : "",
+// 				controller : "techCtrl"
+// 			})

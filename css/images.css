@@ -1,0 +1,120 @@
+/* reset */
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
+header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details{display:block;}
+table{border-collapse:collapse;border-spacing:0;}
+caption,th{text-align:left;font-weight:normal;}
+html,body,fieldset,img,iframe,abbr{border:0;}
+i,cite,em,var,address,dfn{font-style:normal;}
+[hidefocus],summary{outline:0;}
+li{list-style:none;}
+h1,h2,h3,h4,h5,h6,small{font-size:100%;}
+sup,sub{font-size:83%;}
+pre,code,kbd,samp{font-family:inherit;}
+q:before,q:after{content:none;}
+textarea{overflow:auto;resize:none;}
+label,summary{cursor:default;}
+a,button{cursor:pointer;}
+h1,h2,h3,h4,h5,h6,em,strong,b{font-weight:bold;}
+del,ins,u,s,a,a:hover{text-decoration:none;}
+textarea,input,button,select,keygen,legend{color:#333;outline:0;}
+html,body{
+	width: 100%;
+	height: 100%;
+}
+
+body{
+    color: #5a5350;
+    font-weight: 300;
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    font-size: 16px;
+}
+a,a:hover{color:#333;}
+
+*, *:after, *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+.clearfix:before,
+.clearfix:after {
+	display: table;
+	content: " ";
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+
+
+
+
+
+
+
+
+#container,#slideshow{
+	height: 100%;
+	width: 100%;
+}
+
+
+#slideshow{
+	position: absolute;
+	left: 0;
+	top: 0;
+	perspective: 1200px;
+}
+
+.imgBlock{
+	z-index: 100;
+	position: absolute;
+	width:100%;
+	height: 100%;
+	top: 50%;
+	left: 50%;
+    -webkit-transform: translate3d(-50%,-50%,0);
+    transform: translate3d(-50%,-50%,0);
+}
+
+.handle{
+	height: 100%;
+	-webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    white-space: nowrap;
+    font-size: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.imgBox{
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    width: 12.5%;
+    background: #567076;
+    font-size: 16px;
+    white-space: normal;
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+    vertical-align: top;
+}
+
+.img-wrap{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.img-wrap img{
+	position: absolute;
+    display: block;
+    height: calc(100% + 0.2px);
+    opacity: 0.5;
+}
