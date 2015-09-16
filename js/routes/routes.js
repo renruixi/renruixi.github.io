@@ -17,7 +17,7 @@ define(["app"],function(app){
 				controller : "workCtrl"
 			})
 			.when("/images",{
-				templateUrl : "tpl/image.html",
+				templateUrl : "tpl/images.html",
 				controller : "imgCtrl"
 			})
 			.otherwise({redirectTo : "/"});
