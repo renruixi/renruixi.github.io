@@ -2,9 +2,9 @@
 
 define(["app","getWidth"],function(app,getWidth){
 
-	return app.controller("imgCtrl" , ["$scope","getWidth",function($scope,getWidth){
+	return app.controller("imgCtrl",["$scope",function($scope){
 		
-		$scope.width = getWidth.width;
+		$scope.width = "";
 
 	}])
 

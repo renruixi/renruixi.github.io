@@ -22,6 +22,7 @@ requirejs.config({
 
 		"homeCtrl" : "controllers/homeCtrl",
 		"imgCtrl" : "controllers/imgCtrl",
+		"workCtrl" : "controllers/workCtrl",
 
 
 		'route' : "routes/routes",
@@ -43,7 +44,7 @@ requirejs.config({
 
 
 
-requirejs(["jquery","angular",'angular-route',"app","route","homeCtrl","imgCtrl","addAnimate","getWidth","getRandom"],function($,angular){
+requirejs(["jquery","angular",'angular-route',"app","route","homeCtrl","imgCtrl","workCtrl","addAnimate","getWidth","getRandom"],function($,angular){
 	$(function(){
 		angular.bootstrap(document,["myApp"]);
 	})

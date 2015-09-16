@@ -12,8 +12,8 @@ define(["app"],function(app){
 				templateUrl:'tpl/home.html',
 				controller : "homeCtrl"
 			})
-			.when("/works",{
-				templateUrl : "tpl/works.html",
+			.when("/production",{
+				templateUrl : "tpl/production.html",
 				controller : "workCtrl"
 			})
 			.when("/images",{
