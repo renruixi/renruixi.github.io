@@ -7,29 +7,30 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="css3,html5,requirejs,nodejs,angularjs personalPage" />
 		<meta name="keywords" content="css3,html5,requirejs,nodejs,angularjs personalPage" />
-		<link rel="stylesheet" href="css/home.css" />
+		<link rel="stylesheet" href="css/loading.css" />
+		<link rel="stylesheet" href="css/home.css" id="hashchange"/>
 		<script>
-			window.onhashchange=function(){
-				var head = document.getElementsByTagName("head")[0],
-					link = head.getElementsByTagName("link");
-				if(link){
-					for(var i=0;i<link.length;i++){
-						head.removeChild(link[i])
-					}
+		
+			document.onreadystatechange=function(){
+				complete();
+			};
+			
+			
+			function complete(){
+				if(document.readyState == "complete"){
+					var loading = document.getElementById("loading");
+					loading.parentNode.removeChild(loading);
 				}
+			}
+		
+		
+			window.onhashchange=function(){
 				var pattern =/\w+$/g ;
 				var hash = location.hash.match(pattern);
-				var link = document.createElement("link");
-				if(hash === null ){
-					console.log(hash);
-					link.href = "css/home.css";
-				}else{
+				if(hash !== null ){
 					hash = hash[0];
-					console.log(hash);
-					link.href = "css/"+hash+".css";
+					document.getElementById("hashchange").href="css/"+hash+".css";
 				}
-				link.rel = "stylesheet";
-				document.getElementsByTagName("head")[0].appendChild(link);
 			}			
 		</script>
 		<script type="text/javascript" src="js/lib/require.js" data-main="js/main.js"></script>
@@ -38,5 +39,18 @@
 	</head>
 	<body>
 		<div ng-view style="height: 100%;width: 100%;"></div>
+		
+		
+		<div class="loader" id="loading">
+		  <div class="loading">
+		    <div class="dot"></div>
+		    <div class="dot"></div>
+		    <div class="dot"></div>
+		    <div class="dot"></div>
+		    <div class="dot"></div>
+		  </div>
+		</div>  
+		
+		
 	</body>
 </html>
