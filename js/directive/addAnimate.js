@@ -25,9 +25,10 @@
 				$container.on("click",function(){
 					if($ele.hasClass('animate')){
 						$ele.removeClass('animate');
+						$ele.on("webkitTransitionEnd",transEndEvent);
+						$ele.on("transitionEnd",transEndEvent);
 					}
-					$ele.on("webkitTransitionEnd",transEndEvent);
-					$ele.on("transitionEnd",transEndEvent);
+					
 					
 				});
 
