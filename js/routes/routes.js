@@ -27,19 +27,3 @@ define(["app"],function(app){
 
 
 });
-// .when("/favorites",{
-// 				templateUrl:"",
-// 				controller : "favCtrl"
-// 			})
-// 			.when("/image",{
-// 				templateUrl : "",
-// 				controller : "imgCtrl"
-// 			})
-// 			.when("/github",{
-// 				templateUrl : "",
-// 				controller : "gitCtrl"
-// 			})
-// 			.when("/fonttech",{
-// 				templateUrl : "",
-// 				controller : "techCtrl"
-// 			})

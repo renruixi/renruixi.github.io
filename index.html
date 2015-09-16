@@ -7,12 +7,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="css3,html5,requirejs,nodejs,angularjs personalPage" />
 		<meta name="keywords" content="css3,html5,requirejs,nodejs,angularjs personalPage" />
-		
-		<script type="text/javascript" src="js/lib/require.js" data-main="js/main.js"></script>
+		<link rel="stylesheet" href="css/home.css" />
 		<script>
-			
-			document.addEventListener("DOMContentLoaded",function(){
-				
+			window.onhashchange=function(){
 				var head = document.getElementsByTagName("head")[0],
 					link = head.getElementsByTagName("link");
 				if(link){
@@ -22,23 +19,21 @@
 				}
 				var pattern =/\w+$/g ;
 				var hash = location.hash.match(pattern);
-				
+				var link = document.createElement("link");
 				if(hash === null ){
-					var link = document.createElement("link");
+					console.log(hash);
 					link.href = "css/home.css";
-					link.rel = "stylesheet";
-					document.getElementsByTagName("head")[0].appendChild(link);
 				}else{
 					hash = hash[0];
-					var link = document.createElement("link");
+					console.log(hash);
 					link.href = "css/"+hash+".css";
-					link.rel = "stylesheet";
-					document.getElementsByTagName("head")[0].appendChild(link);
 				}
-				console.log(hash);
-				
-			})
+				link.rel = "stylesheet";
+				document.getElementsByTagName("head")[0].appendChild(link);
+			}			
 		</script>
+		<script type="text/javascript" src="js/lib/require.js" data-main="js/main.js"></script>
+		
 		
 	</head>
 	<body>
