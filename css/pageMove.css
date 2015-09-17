@@ -181,6 +181,12 @@ animateView{
 .moveDown {
     background: #34495e;
 }
+
+.moveDown .item{
+	background-color: #34495e;
+}
+
+
 .moveDown .container {
     -webkit-transition: -webkit-transform 0.4s;
     transition: transform 0.4s;
@@ -240,8 +246,16 @@ animateView{
 .layDown {
     background: #b8b6b4;
 }
+
+.layDown .item{
+	background-color: #edcdbb;
+}
+
+.layDown .item span{
+	color: #9b59b6;
+}
+
 .layDown .container {
-	background-color: #924;
     -webkit-transition: -webkit-transform 0.4s;
     transition: transform 0.4s;
     -webkit-transform-origin: 50% 150%;
