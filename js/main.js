@@ -19,7 +19,7 @@ requirejs.config({
 		"pageOut" : "service/pageOut",
 		"pageIn" :"service/pageIn",
 
-		
+
 
 		"app":"controllers/app",
 
@@ -33,6 +33,7 @@ requirejs.config({
 
 		"method" : "lib/method",
 		"changeCSS" : "lib/changeCSS",
+		"loading" : "lib/loading"
 
 
 		
@@ -54,7 +55,7 @@ requirejs.config({
 
 
 
-requirejs(["jquery","angular","angular-ui-router","route","app","homeCtrl","imgCtrl","workCtrl","addAnimate","getWidth","getRandom","pageOut","pageIn","changeCSS","method"],function($,angular){
+requirejs(["jquery","angular","angular-ui-router","route","app","homeCtrl","imgCtrl","workCtrl","addAnimate","getWidth","getRandom","pageOut","pageIn","changeCSS","method","loading"],function($,angular){
 	$(function(){
 		angular.bootstrap(document,["myApp"]);
 	})

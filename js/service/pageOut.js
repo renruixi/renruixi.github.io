@@ -9,7 +9,7 @@ define(["app","method"],function(app,method){
 
 				$timeout(function(){
 					method.removeClass(ele,"animate");
-				},25)
+				},50)
 				for(var i=0;i<oA.length;i++){
 					method.bind(oA[i],"click",function(){
 							hash = this.dataset.hash;

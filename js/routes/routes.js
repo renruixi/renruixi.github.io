@@ -1,6 +1,6 @@
 //路由
 
-define(["app","pageOut","pageIn","changeCSS"],function(app,pageOut,pageIn,changeCSS){
+define(["app","pageOut","pageIn","changeCSS","loading"],function(app,pageOut,pageIn,changeCSS,loading){
 
 	return app.config([
 		"$stateProvider",
@@ -38,6 +38,7 @@ define(["app","pageOut","pageIn","changeCSS"],function(app,pageOut,pageIn,change
 			
 
 			$rootScope.$on("$viewContentLoading",function(event){
+				loading.loading();
 				changeCSS.css();
 				
 			});
