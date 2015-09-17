@@ -32,12 +32,14 @@ define(["app","pageOut","pageIn","changeCSS","loading"],function(app,pageOut,pag
 		.run(["$rootScope","$state","pageOut","pageIn",function($rootScope,$state,pageOut,pageIn){
 			//一旦ui-view中的DOM渲染完成后，触发事件
 			$rootScope.$on("$viewContentLoaded",function(event){
+				//view  loaded后，给已定位好的元素删去class回归原位，并添加相应的点击切换函数
 				pageIn.pageIn("perspective");
 				pageOut.pageOut("perspective");
 			});
 			
 
 			$rootScope.$on("$viewContentLoading",function(event){
+				//view loading时，进行loading动画，并提前给相关元素添加class
 				loading.loading();
 				changeCSS.css();
 				
