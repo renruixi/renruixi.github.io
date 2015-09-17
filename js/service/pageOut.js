@@ -5,17 +5,23 @@ define(["app","method"],function(app,method){
 			if(document.getElementById(id) !== null){
 				var hash,
 					ele = document.getElementById(id),
-				 	oA = method.getByClass(ele,"pagechange");
+				 	oA = method.getByClass(ele,"pagechange"),
+				    pattern =/\w+$/g ;
 
 				$timeout(function(){
 					method.removeClass(ele,"animate");
 				},50)
 				for(var i=0;i<oA.length;i++){
+
 					method.bind(oA[i],"click",function(){
 							hash = this.dataset.hash;
-							method.removeClass(ele,"animate");
-							method.bind(ele,"transitionend",transitionEndEvent);
-							method.bind(ele,"webkitTransitionEnd",transitionEndEvent);
+							if( window.location.hash.match(pattern)[0] == "home" ){
+								method.removeClass(ele,"animate");
+								method.bind(ele,"transitionend",transitionEndEvent);
+								method.bind(ele,"webkitTransitionEnd",transitionEndEvent);
+							}else{
+								transitionEndEvent();
+							}
 
 					});
 				}

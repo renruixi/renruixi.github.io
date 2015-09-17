@@ -23,7 +23,6 @@ html,body{
 }
 
 body{
-    color: #5a5350;
     font-weight: 300;
     font-family: 'Lato', Calibri, Arial, sans-serif;
     overflow-y: scroll;
@@ -51,19 +50,16 @@ a,a:hover{color:#333;}
 
 
 @font-face {
-	font-family: 'typicons';
-	src:url('font/typicons/typicons.eot');
-	src:url('font/typicons/typicons.eot?#iefix') format('embedded-opentype'),
-		url('font/typicons/typicons.ttf') format('truetype'),
-		url('font/typicons/typicons.woff') format('woff'),
-		url('font/typicons/typicons.svg#typicons') format('svg');
-	font-weight: normal;
-	font-style: normal;
+  font-family: 'FontAwesome';
+  src: url('font/fontawesome-webfont.eot?v=4.2.0');
+  src: url('font/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'), url('font/fontawesome-webfont.woff?v=4.2.0') format('woff'), url('font/fontawesome-webfont.ttf?v=4.2.0') format('truetype'), url('font/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 
 .container{
-    background: #1abc9c;
+	background-color:#b8b6b4;
     margin: 0 auto;
     text-align: center;
     overflow: hidden;
@@ -77,7 +73,6 @@ a,a:hover{color:#333;}
 	padding: 1rem 190px 1rem;
     letter-spacing: -1px;
     text-align: center;
-    
 }
 
 .product-title h1{
@@ -98,12 +93,15 @@ a,a:hover{color:#333;}
 
 .links a{
 	display: inline-block;
-    margin: 0.8rem;
+    margin: 0.8rem 1.2rem;
     padding: 0;
     width: 2rem;
     text-decoration: none;
     color: #fff;
 }
+
+
+
 
 .product{
 	width: 80%;
@@ -119,21 +117,14 @@ a,a:hover{color:#333;}
     float: right;
     width: 47.5%;
     padding-bottom: 47.5%;
-    color: white;
     z-index: 10;
-    background-color: #16a085;
     transition: background-color .3s ease-in;
     -moz-transition: background-color .3s ease-in;
     -webkit-transition: background-color .3s ease-in;
 }
 
-.item [class^="icon-"], .item [class*=" icon-"] {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    line-height: 0;
-    margin-left: -0.5em;
-}
+
+
 
 .item:nth-of-type(2n+1){
 	float: left;
@@ -143,3 +134,69 @@ a,a:hover{color:#333;}
     margin-top: 5%;
 }
 
+
+
+
+.links a:before{
+	display: inline-block;
+    font-family: 'FontAwesome';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    margin-right: 10px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home:before{
+	content: "\f015";
+}
+
+
+.icon-back:before{
+	content: "\f112";
+}
+
+
+
+
+.icon-cloud:before{
+	content: "\f0c2";
+}
+
+.icon-tag:before{
+	content: "\f02b";
+}
+
+.icon-down:before{
+	content: "\f019";
+}
+
+.icon-heart:before{
+	content: "\f004";
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+	font-size: 3rem;
+    font-family: 'FontAwesome';
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    text-decoration: inherit;
+    font-variant: normal;
+    text-transform: none;
+    width: 3rem;
+}
+
+.item [class^="icon-"], .item [class*=" icon-"] {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    line-height: 0;
+    margin-left: -1.5em;
+}

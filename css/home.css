@@ -49,17 +49,14 @@ a,a:hover{color:#333;}
 }
 
 /* 全局font */
-@font-face {
-	font-family: 'typicons';
-	src:url('font/typicons/typicons.eot');
-	src:url('font/typicons/typicons.eot?#iefix') format('embedded-opentype'),
-		url('font/typicons/typicons.ttf') format('truetype'),
-		url('font/typicons/typicons.woff') format('woff'),
-		url('font/typicons/typicons.svg#typicons') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
 
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('font/fontawesome-webfont.eot?v=4.2.0');
+  src: url('font/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'), url('font/fontawesome-webfont.woff?v=4.2.0') format('woff'), url('font/fontawesome-webfont.ttf?v=4.2.0') format('truetype'), url('font/fontawesome-webfont.svg?v=4.2.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 
 
 /* nav */
@@ -94,8 +91,7 @@ a,a:hover{color:#333;}
 
 .outer-nav a::before {
     display: inline-block;
-    font-family: 'typicons';
-    speak: none;
+    font-family: 'FontAwesome';
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
@@ -108,31 +104,27 @@ a,a:hover{color:#333;}
 
 
 .icon-home::before {
-    content: "\e601";
+    content: "\f015";
 }
 
 .icon-news::before {
-    content: "\e600";
+    content: "\f1ea";
 }
 
 .icon-image::before {
-    content: "\e602";
-}
-
-.icon-upload::before {
-    content: "\e603";
+    content: "\f03e";
 }
 
 .icon-star::before {
-    content: "\e604";
+    content: "\f005";
 }
 
-.icon-mail::before {
-    content: "\e605";
+.icon-git::before {
+    content: "\f004";
 }
 
-.icon-lock::before {
-    content: "\e606";
+.icon-book::before {
+    content: "\f02d";
 }
 
 

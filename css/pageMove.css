@@ -241,6 +241,7 @@ animateView{
     background: #b8b6b4;
 }
 .layDown .container {
+	background-color: #924;
     -webkit-transition: -webkit-transform 0.4s;
     transition: transform 0.4s;
     -webkit-transform-origin: 50% 150%;
