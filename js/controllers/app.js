@@ -1,8 +1,8 @@
 /**
  * 建立angular.module
  */
-define(['angular'], function (angular) {
-    var app = angular.module('myApp', ['ngRoute']);
+define(["angular","angular-ui-router"], function (angular) {
+    var app = angular.module("myApp", ["ui.router"]);
     
     return app;
 

@@ -2,27 +2,32 @@
 
 define(["app"],function(app){
 
-	return app.config(["$routeProvider",function($routeProvider){
-		$routeProvider
-			.when("/",{
+	return app.config([
+		"$stateProvider",
+		"$urlRouterProvider",
+		"$locationProvider",
+		function($stateProvider,$urlRouterProvider,$locationProvider){
+
+		$urlRouterProvider.when("", "/home");
+
+		$stateProvider
+			.state("home",{
+				url : "/home",
 				templateUrl:'tpl/home.html',
 				controller : "homeCtrl"
 			})
-			.when("/home",{
-				templateUrl:'tpl/home.html',
-				controller : "homeCtrl"
-			})
-			.when("/production",{
+			.state("production",{
+				url : "/production",
 				templateUrl : "tpl/production.html",
 				controller : "workCtrl"
 			})
-			.when("/images",{
+			.state("images",{
+				url : "/images",
 				templateUrl : "tpl/images.html",
 				controller : "imgCtrl"
 			})
-			.otherwise({redirectTo : "/"});
 
-			// $locationProvider.html5Mode(true);
+			// $locationProvider.html5Mode(true).hashPrefix('!');
 	}]);
 
 

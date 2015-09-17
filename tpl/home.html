@@ -34,11 +34,11 @@
 	
 	<!-- ng-class貌似不支持动态改变的key-value 生成的class，为了达到变化的运动类型，只能事先指定  也许是我学艺不精= = ，试了一上午没试出来动态改变的class -->
 	<nav ng-class="{'outer-nav' : default,'right vertical' :rv,'bottom horizontal' : bh,'top horizontal' : th}" id="homeNav">
-		<a href="#home" class="icon-home">Home</a>
-		<a href="#production" class="icon-news">Production</a>
-		<a href="#images" class="icon-image">Images</a>
-		<a href="#favorites" class="icon-star">Favorites</a>
-		<a href="#github" class="icon-mail">Github</a>
-		<a href="#fontart" class="icon-lock">Font-Tech</a>
+		<a ui-sref="home" class="icon-home">Home</a>
+		<a ui-sref="production" class="icon-news">Production</a>
+		<a ui-sref="images" class="icon-image">Images</a>
+		<a ui-sref="favorites" class="icon-star">Favorites</a>
+		<a ui-sref="github" class="icon-mail">Github</a>
+		<a ui-sref="fontart" class="icon-lock">Font-Tech</a>
 	</nav>
 </section>

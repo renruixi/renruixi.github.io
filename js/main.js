@@ -8,7 +8,7 @@ requirejs.config({
 	baseUrl:"js/",
 	paths:{
 		'angular':"lib/angular.min",
-		'angular-route' : "lib/angular-route.min",
+		"angular-ui-router" : "lib/angular-ui-router.min",
 		'jquery':'lib/jquery-1.11.3.min',
 
 		
@@ -35,16 +35,16 @@ requirejs.config({
 		'angular': {
             exports: 'angular'
         },
-        'angular-route':{
-           deps: ["angular"],
-           exports: 'angular-route'
-        },
+        "angular-ui-router":{
+        	deps:["angular"],
+        	exports:"angular-ui-router"
+        }
 	}
 });
 
 
 
-requirejs(["jquery","angular",'angular-route',"app","route","homeCtrl","imgCtrl","workCtrl","addAnimate","getWidth","getRandom"],function($,angular){
+requirejs(["jquery","angular","angular-ui-router","route","app","homeCtrl","imgCtrl","workCtrl","addAnimate","getWidth","getRandom"],function($,angular){
 	$(function(){
 		angular.bootstrap(document,["myApp"]);
 	})

@@ -8,7 +8,7 @@
 		<meta name="description" content="css3,html5,requirejs,nodejs,angularjs personalPage" />
 		<meta name="keywords" content="css3,html5,requirejs,nodejs,angularjs personalPage" />
 		<link rel="stylesheet" href="css/loading.css" />
-		<link rel="stylesheet" href="css/home.css" id="hashchange"/>
+		
 		<script>
 		
 			document.onreadystatechange=function(){
@@ -36,12 +36,13 @@
 				}
 			}			
 		</script>
+		<link rel="stylesheet" href="css/home.css" id="hashchange"/>
 		<script type="text/javascript" src="js/lib/require.js" data-main="js/main.js"></script>
 		
 		
 	</head>
 	<body>
-		<div ng-view style="height: 100%;width: 100%;"></div>
+		<div ui-view style="height: 100%;width: 100%;"></div>
 		
 		
 		<div class="loader" id="loading">
