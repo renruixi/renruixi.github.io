@@ -27,6 +27,8 @@ requirejs.config({
 
 		'route' : "routes/routes",
 
+		"hashchange" : "lib/hashchange",
+
 	},
 	shim:{
 		'jquery':{
@@ -44,7 +46,7 @@ requirejs.config({
 
 
 
-requirejs(["jquery","angular","angular-ui-router","route","app","homeCtrl","imgCtrl","workCtrl","addAnimate","getWidth","getRandom"],function($,angular){
+requirejs(["jquery","angular","angular-ui-router","route","app","homeCtrl","imgCtrl","workCtrl","addAnimate","getWidth","getRandom","hashchange"],function($,angular){
 	$(function(){
 		angular.bootstrap(document,["myApp"]);
 	})
