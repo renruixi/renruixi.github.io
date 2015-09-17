@@ -16,7 +16,10 @@ requirejs.config({
 		"getWidth" : "directive/getWidth",
 
 		"getRandom" : "service/getRandom",
+		"pageOut" : "service/pageOut",
+		"pageIn" :"service/pageIn",
 
+		
 
 		"app":"controllers/app",
 
@@ -27,7 +30,12 @@ requirejs.config({
 
 		'route' : "routes/routes",
 
-		"hashchange" : "lib/hashchange",
+
+		"method" : "lib/method",
+		"changeCSS" : "lib/changeCSS",
+
+
+		
 
 	},
 	shim:{
@@ -46,7 +54,7 @@ requirejs.config({
 
 
 
-requirejs(["jquery","angular","angular-ui-router","route","app","homeCtrl","imgCtrl","workCtrl","addAnimate","getWidth","getRandom","hashchange"],function($,angular){
+requirejs(["jquery","angular","angular-ui-router","route","app","homeCtrl","imgCtrl","workCtrl","addAnimate","getWidth","getRandom","pageOut","pageIn","changeCSS","method"],function($,angular){
 	$(function(){
 		angular.bootstrap(document,["myApp"]);
 	})

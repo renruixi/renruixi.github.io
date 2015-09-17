@@ -7,19 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="css3,html5,requirejs,nodejs,angularjs personalPage" />
 		<meta name="keywords" content="css3,html5,requirejs,nodejs,angularjs personalPage" />
-		<script>
-			window.onhashchange=function(){
-				var pattern =/\w+$/g ;
-				var link = document.getElementById("hashchange")
-				var hash = location.hash.match(pattern);
-				if(hash !== null ){
-					hash = hash[0];
-					link.href="css/"+hash+".css";
-				}else{
-					link.href = "css/home.css";
-				}
-			}
-		</script>
+		<link rel="stylesheet" href="css/pageMove.css" />
 		<link rel="stylesheet" href="css/loading.css" />
 		
 		<script>
@@ -44,7 +32,7 @@
 		
 	</head>
 	<body>
-		<div ui-view style="height: 100%;width: 100%;" complete={{complete}}></div>
+		<div ui-view ></div>
 		
 		
 		<div class="loader" id="loading">

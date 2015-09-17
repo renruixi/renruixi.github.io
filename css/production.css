@@ -69,6 +69,8 @@ a,a:hover{color:#333;}
     overflow: hidden;
     height: 100%;
 	width: 100%;
+	-webkit-transform: translateZ(0) translateX(0) rotateY(0deg);
+    transform: translateZ(0) translateX(0) rotateY(0deg);
 }
 
 .product-title{
@@ -106,7 +108,8 @@ a,a:hover{color:#333;}
 .product{
 	width: 80%;
     max-width: 420px;
-    margin: 90px auto 90px;
+    margin: 10% auto;
+    bottom: 10%;
     font-size: 4rem;
 }
 
