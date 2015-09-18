@@ -19,9 +19,10 @@ requirejs.config({
 		"pageOut" : "service/pageOut",
 		"pageIn" :"service/pageIn",
 		"draginit" : "service/draginit",
+		"proChange" :"service/proChange",
 
 
-
+ 
 		"app":"controllers/app",
 
 		"homeCtrl" : "controllers/homeCtrl",
@@ -56,7 +57,7 @@ requirejs.config({
 
 
 
-requirejs(["jquery","angular","angular-ui-router","route","app","homeCtrl","imgCtrl","workCtrl","addAnimate","getWidth","getRandom","pageOut","pageIn","changeCSS","method","loading","draginit"],function($,angular){
+requirejs(["jquery","angular","angular-ui-router","route","app","homeCtrl","imgCtrl","workCtrl","addAnimate","getWidth","getRandom","pageOut","pageIn","changeCSS","method","loading","draginit","proChange"],function($,angular){
 	$(function(){
 		angular.bootstrap(document,["myApp"]);
 	})

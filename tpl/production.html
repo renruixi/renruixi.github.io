@@ -9,16 +9,16 @@
 		</header>	
 			
 		<nav class="product clearfix">
-			<button class="item" id="topleft"  ng-class="{ "active" :target ,"inactive" :  }">
+			<button id="topleft"  ng-click="changeClass('tpl')"  ng-class="{ 'item' :true, 'active' :target.tpl ,'inactive':targetReverse.tpl }">
 				<span class="icon-cloud"></span>
 			</button>
-			<button class="item" id="topright">
+			<button  id="topright" ng-click="changeClass('tpr')"  ng-class="{ 'item' :true, 'active' :target.tpr ,'inactive':targetReverse.tpr }">
 				<span class="icon-tag"></span>
 			</button>
-			<button class="item" id="bottmleft" >
+			<button  id="btmleft" ng-click="changeClass('btml')"  ng-class="{'item' :true, 'active' :target.btml ,'inactive':targetReverse.btml }">
 				<span class="icon-down"></span>
 			</button>
-			<button class="item" id="bottmright" >
+			<button  id="btmright" ng-click="changeClass('btmr')"  ng-class="{ 'item' :true,'active' :target.btmr ,'inactive':targetReverse.btmr }">
 				<span class="icon-heart"></span>
 			</button>
 		</nav>

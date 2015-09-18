@@ -1,19 +1,25 @@
-define(["app"],function(app){
-	app.controller("workCtrl",["$scope",function($scope){
+define(["app","proChange"],function(app,proChange){
+	app.controller("workCtrl",["$scope","proChange",function($scope,proChange){
 
+		$scope.targetReverse={
+			"tpl" :false,
+			"tpr" :false,
+			"btml" :false,
+			"btmr" :false
+		};
 
+		$scope.target={
+			"tpl" :false,
+			"tpr" :false,
+			"btml" :false,
+			"btmr" :false
+		};
 
+		$scope.changeClass=function(dir){
 
-		$scope.acitve = false;
+			$scope.target[dir] = true;	
 
-		$scope.reverse = false;
-
-		$scope.inactive = true;
-
-
-		$scope.changeClass=function(){
-
-						
+			proChange.forIn($scope.targetReverse,dir);
 
 		};
 
