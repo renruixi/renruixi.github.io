@@ -132,7 +132,7 @@ a,a:hover{color:#333;}
 
 /* perspective */
 #perspective{
-   	position: fixed;
+   	position: relative;
 	width: 100%;
 	height: 100%;
 }

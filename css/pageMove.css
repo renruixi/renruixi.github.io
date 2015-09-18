@@ -4,11 +4,10 @@
 	height: 100%;
 }
 
-animateView{
+.animateView{
     position: fixed;
     -webkit-perspective: 1500px;
     perspective: 1500px;
-
 }
 
 
@@ -46,12 +45,6 @@ animateView{
     transform-style: preserve-3d;
 }
 
-.animateView{
-    position: fixed;
-    -webkit-perspective: 1500px;
-    perspective: 1500px;
-
-}
 
 /* rotateLeft*/
 .rotateLeft{

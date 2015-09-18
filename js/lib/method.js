@@ -60,11 +60,23 @@ define(function(){
 	}
 
 
+	function removeHandler(element,type,handler){
+		if(element.removeEventListener){
+			element.removeEventListener(type,handler,false);
+		}else if(element.detachEvent){
+			element.detachEvent('on'+type,handler);
+		}else{
+			element['on'+type]=null;
+		}
+	}
+
+
 	return {
 		bind : bind,
 		getByClass : getByClass,
 		removeClass : removeClass,
-		addClass : addClass
+		addClass : addClass,
+		removeHandler : removeHandler
 	}
 
 	

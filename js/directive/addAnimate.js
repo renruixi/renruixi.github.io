@@ -18,6 +18,7 @@
 				$btn.on("click",function(ev){
 					ev.stopPropagation();
 					$timeout(function(){
+						$ele.css("position","fixed");
 						scope.changeStyle();
 					},25);
 				});
@@ -25,6 +26,7 @@
 				$container.on("click",function(){
 					//判断是否处在运动状态
 					if($ele.hasClass('animate')){
+						
 						$ele.removeClass('animate');
 						$ele.on("webkitTransitionEnd",transEndEvent);
 						$ele.on("transitionEnd",transEndEvent);
@@ -42,7 +44,7 @@
 						scope.bh =false;
 						scope.th =false;
 					});
-
+ 					$ele.css("position","relative");
 					//每次transitionEnd事件结束后，取消该事件的绑定，避免下一次的End事件被监听
 					$ele.off("webkitTransitionEnd");
 					$ele.off("transitionEnd");

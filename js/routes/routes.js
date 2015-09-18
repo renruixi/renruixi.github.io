@@ -5,7 +5,8 @@ define(["app","pageOut","pageIn","changeCSS","loading"],function(app,pageOut,pag
 	return app.config([
 		"$stateProvider",
 		"$urlRouterProvider",
-		function($stateProvider,$urlRouterProvider){
+		"$locationProvider",
+		function($stateProvider,$urlRouterProvider,$locationProvider){
 
 
 			$urlRouterProvider.when("", "/home");
@@ -25,11 +26,13 @@ define(["app","pageOut","pageIn","changeCSS","loading"],function(app,pageOut,pag
 					url : "/images",
 					templateUrl : "tpl/images.html",
 					controller : "imgCtrl"
-				})
+				});
 
-				// $locationProvider.html5Mode(true).hashPrefix('!');
+				 //$locationProvider.html5Mode(true).hashPrefix('!');
 		}])
 		.run(["$rootScope","$state","pageOut","pageIn",function($rootScope,$state,pageOut,pageIn){
+
+			$rootScope.$state = $state;
 			//一旦ui-view中的DOM渲染完成后，触发事件
 			$rootScope.$on("$viewContentLoaded",function(event){
 				//view  loaded后，给已定位好的元素删去class回归原位，并添加相应的点击切换函数

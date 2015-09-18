@@ -5,7 +5,7 @@
 
 
 requirejs.config({
-	baseUrl:"js/",
+	baseUrl : "js/",
 	paths:{
 		'angular':"lib/angular.min",
 		"angular-ui-router" : "lib/angular-ui-router.min",
@@ -18,6 +18,7 @@ requirejs.config({
 		"getRandom" : "service/getRandom",
 		"pageOut" : "service/pageOut",
 		"pageIn" :"service/pageIn",
+		"draginit" : "service/draginit",
 
 
 
@@ -55,7 +56,7 @@ requirejs.config({
 
 
 
-requirejs(["jquery","angular","angular-ui-router","route","app","homeCtrl","imgCtrl","workCtrl","addAnimate","getWidth","getRandom","pageOut","pageIn","changeCSS","method","loading"],function($,angular){
+requirejs(["jquery","angular","angular-ui-router","route","app","homeCtrl","imgCtrl","workCtrl","addAnimate","getWidth","getRandom","pageOut","pageIn","changeCSS","method","loading","draginit"],function($,angular){
 	$(function(){
 		angular.bootstrap(document,["myApp"]);
 	})
