@@ -1,5 +1,5 @@
 define(["app","method"],function(app,method){
-	app.directive("mouseWheel",function(){
+	app.directive("mouseWheel",function($timeout){
 		return {
 			restrict :'A',
 			link : function(scope,ele,attr){
@@ -18,37 +18,31 @@ define(["app","method"],function(app,method){
 					DeltaFn(event);
 				});
 				
-				
-				for(var i=0;i<obj.length;i++){
-					obj[i].index = i;
-					method.bind(obj[i],"click",function(){
-						
-					console.log(scope.finish)
-						if(scope.finish){
-							for(var i=0;i<obj.length;i++){
-								obj[i].style.transform ="translateZ(0) translateX(0) rotateY(0)";
-								obj[i].style.webkitTransform ="translateZ(0) translateX(0) rotateY(0)";
-								obj[i].style.mozTransform ="translateZ(0) translateX(0) rotateY(0)"; 
-							}
-							ele.css("transform","translateX("+(-this.index*document.documentElement.clientWidth)+"px)");
-							ele.css("webkitTransform","translateX("+(-this.index*document.documentElement.clientWidth)+"px)");
-						}
-						
-					});
-				}
-				
-				
+					
 				
 				function DeltaFn(event){
 					
 					var delta = method.getWheelDelta(event);
-				
-					for(var i=0;i<obj.length;i++){
-						obj[i].style.transform ="translateZ(-1800px) translateX(-50%) rotateY("+(startWheel+delta/10)+"deg)";
-						obj[i].style.webkitTransform ="translateZ(-1800px) translateX(-50%) rotateY("+(startWheel+delta/10)+"deg)";
-						obj[i].style.mozTransform ="translateZ(-1800px) translateX(-50%) rotateY("+(startWheel+delta/10)+"deg)";
+					
+					if(startWheel+delta/10 !== 0){
+						for(var i=0;i<obj.length;i++){
+							obj[i].style.transform ="translateZ(-1800px) translateX(-50%) rotateY("+(startWheel+delta/10)+"deg)";
+							obj[i].style.webkitTransform ="translateZ(-1800px) translateX(-50%) rotateY("+(startWheel+delta/10)+"deg)";
+							obj[i].style.mozTransform ="translateZ(-1800px) translateX(-50%) rotateY("+(startWheel+delta/10)+"deg)";
+						}
+						startWheel = startWheel+delta/10;
+					}else{
+						for(var i=0;i<obj.length;i++){
+							obj[i].style.transform ="translateZ(0) translateX(0) rotateY(0deg)";
+							obj[i].style.webkitTransform ="translateZ(0) translateX(0) rotateY(0deg)";
+							obj[i].style.mozTransform ="translateZ(0) translateX(0) rotateY(0deg)";
+							
+							
+						}
 					}
-					startWheel = startWheel+delta/10;
+						
+					
+					
 					
 				}
 			}
