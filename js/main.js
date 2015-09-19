@@ -14,6 +14,7 @@ requirejs.config({
 		
 		"addAnimate" : "directive/addAnimate",
 		"getWidth" : "directive/getWidth",
+		"mouseWheel" :"directive/mousewheel",
 
 		"getRandom" : "service/getRandom",
 		"pageOut" : "service/pageOut",
@@ -57,7 +58,7 @@ requirejs.config({
 
 
 
-requirejs(["jquery","angular","angular-ui-router","route","app","homeCtrl","imgCtrl","workCtrl","addAnimate","getWidth","getRandom","pageOut","pageIn","changeCSS","method","loading","draginit","proChange"],function($,angular){
+requirejs(["jquery","angular","angular-ui-router","route","app","homeCtrl","imgCtrl","workCtrl","addAnimate","getWidth","getRandom","pageOut","pageIn","changeCSS","method","loading","draginit","proChange","mouseWheel",],function($,angular){
 	$(function(){
 		angular.bootstrap(document,["myApp"]);
 	})

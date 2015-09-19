@@ -40,8 +40,10 @@
 .outer-nav.vertical {
     top: 50%;
     -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
     transform: translateY(-50%);
     -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
     transform-style: preserve-3d;
 }
 

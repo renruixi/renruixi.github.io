@@ -97,7 +97,7 @@ a,a:hover{color:#333;}
     font-variant: normal;
     text-transform: none;
     line-height: 1;
-    margin-right: 10px;
+    padding-right: 10px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }

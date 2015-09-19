@@ -69,6 +69,15 @@ define(function(){
 			element['on'+type]=null;
 		}
 	}
+	
+	
+	function getWheelDelta(event){
+		if(event.wheelDelta){
+				return  event.wheelDelta
+		}else{
+			return -event.detail*40
+		}
+	}
 
 
 	return {
@@ -76,7 +85,8 @@ define(function(){
 		getByClass : getByClass,
 		removeClass : removeClass,
 		addClass : addClass,
-		removeHandler : removeHandler
+		removeHandler : removeHandler,
+		getWheelDelta : getWheelDelta
 	}
 
 	

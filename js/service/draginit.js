@@ -1,6 +1,8 @@
 define(["app","method"],function(app,method){
 	app.service("draginit",function(){
-
+		
+		
+		
 		function Draginit(ele,child){
 			this.init(ele,child);
 		}
@@ -8,18 +10,21 @@ define(["app","method"],function(app,method){
 		Draginit.prototype.init=function(ele,child){
 
 			this.ele = document.getElementById(ele);
-			this.child = method.getByClass(this.ele,child);
+			this.child = method.getByClass(this.ele,child)[0];
+			
+			this.finish = false;
 
 		};
 
-		Draginit.prototype.drag=function(){
+		Draginit.prototype.drag=function(callback){
 
 			var self = this;
 			var iNow = 0;
 			var moveX=0;
 			var startX=0;
 			var iX = 0;
-
+			
+			
 			var iWidth = document.documentElement.clientWidth;
 
 			method.bind(self.ele,"mousedown",function(ev){
@@ -45,7 +50,7 @@ define(["app","method"],function(app,method){
 				};
 
 				document.onmouseup=function(ev){
-					console.log(iX);
+					
 					var ev = ev ||window.event;
 					iNow=-Math.round(iX/iWidth);
 					if(iNow<0){
@@ -58,17 +63,13 @@ define(["app","method"],function(app,method){
 					self.ele.style.transition="0.3s";
 					iX=-iNow*iWidth;
 					self.ele.style.WebkitTransform=self.ele.style.transform="translateX("+iX+"px)";
+					
+					self.finish = true;
+					
+					callback(self.finish);
 				}
 
-				// method.bind(document,"mouseup",function(ev){
-
-				// 	alert(1);
-
-				// 	document.onmousemove = null;
-				// 	document.onmouseup = null;
-
-					
-				// });
+				
 				self.ele.setCapture && self.ele.setCapture();
 			});
 		};

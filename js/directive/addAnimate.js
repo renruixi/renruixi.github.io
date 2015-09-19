@@ -29,7 +29,8 @@
 						
 						$ele.removeClass('animate');
 						$ele.on("webkitTransitionEnd",transEndEvent);
-						$ele.on("transitionEnd",transEndEvent);
+						$ele.on("mozTransitionEnd",transEndEvent);
+						$ele.on("transitionend",transEndEvent);
 					}
 					
 					
@@ -47,7 +48,8 @@
  					$ele.css("position","relative");
 					//每次transitionEnd事件结束后，取消该事件的绑定，避免下一次的End事件被监听
 					$ele.off("webkitTransitionEnd");
-					$ele.off("transitionEnd");
+					$ele.off("mozTransitionEnd");
+					$ele.off("transitionend");
  				}
 
  			
