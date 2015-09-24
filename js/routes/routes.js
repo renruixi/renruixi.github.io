@@ -9,9 +9,14 @@ define(["app","pageOut","pageIn","changeCSS","loading"],function(app,pageOut,pag
 		function($stateProvider,$urlRouterProvider,$locationProvider){
 
 
-			$urlRouterProvider.when("", "/home");
+			$urlRouterProvider.otherwise("/home");
 
 			$stateProvider
+				.state(" ",{
+					url : "/home",
+					templateUrl:'tpl/home.html',
+					controller : "homeCtrl"
+				})
 				.state("home",{
 					url : "/home",
 					templateUrl:'tpl/home.html',
@@ -28,7 +33,7 @@ define(["app","pageOut","pageIn","changeCSS","loading"],function(app,pageOut,pag
 					controller : "imgCtrl"
 				});
 
-				 //$locationProvider.html5Mode(true).hashPrefix('!');
+				 //$locationProvider.html5Mode(true);
 		}])
 		.run(["$rootScope","$state","pageOut","pageIn",function($rootScope,$state,pageOut,pageIn){
 
