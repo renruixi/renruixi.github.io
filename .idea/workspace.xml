@@ -2,6 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c516c62-8ae5-4684-8b4d-881799a6575a" name="Default" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;newPage/index.html&#10;">
+      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\img\head.jpg" afterPath="" />
+      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\img\kobe.jpg" afterPath="" />
+      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\img\kobe2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\img\kobe_half.jpg" afterPath="" />
+      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\img\nbabg.jpg" afterPath="" />
+      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\img\onear_half.jpg" afterPath="" />
+      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\img\text.PNG" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/newPage/img/kobe3.png" afterPath="$PROJECT_DIR$/newPage/img/kobe3.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/newPage/img/kobe_move.png" afterPath="$PROJECT_DIR$/newPage/img/kobe_move.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/newPage/img/textbg.png" afterPath="$PROJECT_DIR$/newPage/img/textbg.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/newPage/img/title.png" afterPath="$PROJECT_DIR$/newPage/img/title.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/newPage/css/home.css" afterPath="$PROJECT_DIR$/newPage/css/home.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/newPage/index.html" afterPath="$PROJECT_DIR$/newPage/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/newPage/js/kobe.js" afterPath="$PROJECT_DIR$/newPage/js/kobe.js" />
@@ -25,11 +36,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/newPage/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.48370498">
-              <caret line="65" column="18" selection-start-line="65" selection-start-column="18" selection-end-line="65" selection-end-column="18" />
+            <state vertical-scroll-proportion="-4.017857">
+              <caret line="68" column="16" selection-start-line="68" selection-start-column="16" selection-end-line="68" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -39,17 +50,17 @@
         <entry file="file://$PROJECT_DIR$/newPage/css/home.css">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="233" column="1" selection-start-line="233" selection-start-column="1" selection-end-line="233" selection-end-column="1" />
+              <caret line="188" column="0" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="kobe.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="kobe.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/newPage/js/kobe.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+            <state vertical-scroll-proportion="2.2242227">
+              <caret line="67" column="6" selection-start-line="67" selection-start-column="6" selection-end-line="67" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -66,9 +77,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/newPage/index.html" />
-        <option value="$PROJECT_DIR$/newPage/css/home.css" />
         <option value="$PROJECT_DIR$/newPage/js/kobe.js" />
+        <option value="$PROJECT_DIR$/newPage/css/home.css" />
+        <option value="$PROJECT_DIR$/newPage/index.html" />
       </list>
     </option>
   </component>
@@ -321,11 +332,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/newPage/img/head.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/newPage/css/animate.min.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.45225224">
@@ -337,23 +343,23 @@
     <entry file="file://$PROJECT_DIR$/newPage/css/home.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="233" column="1" selection-start-line="233" selection-start-column="1" selection-end-line="233" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/newPage/js/kobe.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <caret line="188" column="0" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/newPage/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48370498">
-          <caret line="65" column="18" selection-start-line="65" selection-start-column="18" selection-end-line="65" selection-end-column="18" />
+        <state vertical-scroll-proportion="-4.017857">
+          <caret line="68" column="16" selection-start-line="68" selection-start-column="16" selection-end-line="68" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newPage/js/kobe.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.2242227">
+          <caret line="67" column="6" selection-start-line="67" selection-start-column="6" selection-end-line="67" selection-end-column="6" />
           <folding />
         </state>
       </provider>

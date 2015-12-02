@@ -132,12 +132,12 @@ a, a:hover {
 }
 
 .slide_1 {
-    background: url("../img/kobe.jpg");
+    background: url("../img/kobe.png");
     background-size: 100% 100%;
 }
 
 .slide_2 {
-    background: url("../img/kobe2.jpg");
+    background: url("../img/kobe2.png");
     background-size: 100% 100%;
 }
 
@@ -171,7 +171,7 @@ a, a:hover {
 .slide_3 .left_section {
     height: 100%;
     width: 50%;
-    background: url("../img/kobe_half.jpg");
+    background: url("../img/kobe_half.png");
     background-size: 100% 100%;
     box-sizing: border-box;
     transform: translate3d(0, -100%, 0);
@@ -180,7 +180,7 @@ a, a:hover {
 .slide_3 .right_section {
     height: 100%;
     width: 50%;
-    background: url("../img/onear_half.jpg");
+    background: url("../img/onear_half.png");
     background-size: 100% 100%;
     box-sizing: border-box;
     transform: translate3d(0, 100%, 0);
