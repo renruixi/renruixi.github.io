@@ -198,6 +198,10 @@ a, a:hover {
     opacity: 0;
 }
 
+.text img{
+    display: block;
+    width: 100%;
+}
 .textMove{
     animation: textZoomOut 0.5s;
     animation-fill-mode: forwards;
