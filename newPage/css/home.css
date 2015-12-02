@@ -141,7 +141,7 @@ a, a:hover {
     background-size: 100% 100%;
 }
 
-.slide_2 img{
+.slide_2 img {
     position: absolute;
     left: 0;
     top: 0;
@@ -174,7 +174,7 @@ a, a:hover {
     background: url("../img/kobe_half.jpg");
     background-size: 100% 100%;
     box-sizing: border-box;
-    transform: translate3d(0,-100%,0);
+    transform: translate3d(0, -100%, 0);
 }
 
 .slide_3 .right_section {
@@ -183,44 +183,60 @@ a, a:hover {
     background: url("../img/onear_half.jpg");
     background-size: 100% 100%;
     box-sizing: border-box;
-    transform: translate3d(0,100%,0);
-    -webkit-transform: translate3d(0,100%,0);
+    transform: translate3d(0, 100%, 0);
+    -webkit-transform: translate3d(0, 100%, 0);
 }
 
-.slide_3 .text{
+.slide_3 .text {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate3d(-50%,0,0) scale3d(3,3,3);
-    -webkit-transform: translate3d(-50%,-50%,0)  scale3d(3,3,3);
-    height:14px;
+    transform: translate3d(-50%, 0, 0) scale3d(3, 3, 3);
+    -webkit-transform: translate3d(-50%, -50%, 0) scale3d(3, 3, 3);
+    height: 14px;
     width: 5.25rem;
     opacity: 0;
 }
 
-.text img{
+.slide_3 .text .before {
+    opacity: 0;
+    width: 161px;
+    height: 135px;
+    background-image: url(../img/textbg.png);
+    background-size: 161px 135px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.text .bgMove {
+    animation: textbg ease-out 2.5s forwards;
+    -webkit-animation: textbg 1.5s ease-out 0.1s forwards;
+}
+
+.text img {
     display: block;
     width: 100%;
 }
-.textMove{
+
+.textMove {
     animation: textZoomOut 0.5s;
     animation-fill-mode: forwards;
-    -webkit-animation: textZoomOut 0.5s;
-    -webkit-animation-fill-mode: forwards;
+    -webkit-animation: textZoomOut 0.5s forwards;
 }
 
-.leftDown{
+.leftDown {
     animation: kobeAndOnear_down 1s;
     animation-fill-mode: forwards;
-    -webkit-animation: kobeAndOnear_down 1s;
-    -webkit-animation-fill-mode: forwards;
+    -webkit-animation: kobeAndOnear_down 1s forwards;
 }
 
-.rightUp{
+.rightUp {
     animation: kobeAndOnear_up 1s;
     animation-fill-mode: forwards;
-    -webkit-animation: kobeAndOnear_up 1s;
-    -webkit-animation-fill-mode: forwards;
+    -webkit-animation: kobeAndOnear_up 1s forwards;
 }
 
 /* slideEndMove*/
@@ -240,28 +256,15 @@ a, a:hover {
     }
 }
 
-@keyframes kobeAndOnear_up{
+@keyframes kobeAndOnear_up {
     from {
     }
     to {
         transform: translate3d(0, 0, 0);
     }
 }
-@-webkit-keyframes kobeAndOnear_up{
-    from {
-    }
-    to {
-        -webkit-transform: translate3d(0, 0, 0);
-    }
-}
-@keyframes kobeAndOnear_down{
-     from {
-     }
-     to {
-         transform: translate3d(0, 0, 0);
-     }
- }
-@-webkit-keyframes kobeAndOnear_down{
+
+@-webkit-keyframes kobeAndOnear_up {
     from {
     }
     to {
@@ -269,19 +272,64 @@ a, a:hover {
     }
 }
 
-@keyframes textZoomOut{
+@keyframes kobeAndOnear_down {
     from {
     }
     to {
-        transform: scale3d(1, 1, 1) translate3d(-50%,0,0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@-webkit-keyframes kobeAndOnear_down {
+    from {
+    }
+    to {
+        -webkit-transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes textZoomOut {
+    from {
+    }
+    to {
+        transform: scale3d(1, 1, 1) translate3d(-50%, 0, 0);
         opacity: 1;
     }
 }
-@-webkit-keyframes textZoomOut{
+
+@-webkit-keyframes textZoomOut {
     from {
     }
     to {
-        -webkit-transform: scale3d(1, 1, 1) translate3d(-50%,0,0);
+        -webkit-transform: scale3d(1, 1, 1) translate3d(-50%, 0, 0);
         opacity: 1;
+    }
+}
+
+@keyframes textbg {
+    from {
+        opacity: .8
+    }
+
+    to {
+        opacity: 0;
+        -webkit-transform: translate(-50%, -50%) scale(1.3);
+        -ms-transform: translate(-50%, -50%) scale(1.3);
+        -o-transform: translate(-50%, -50%) scale(1.3);
+        transform: translate(-50%, -50%) scale(1.3);
+    }
+}
+
+@-webkit-keyframes textbg {
+    from {
+        opacity: .8
+    }
+
+    to {
+        opacity: 0;
+        -webkit-transform: translate(-50%, -50%) scale(1.3);
+        -ms-transform: translate(-50%, -50%) scale(1.3);
+        -o-transform: translate(-50%, -50%) scale(1.3);
+        transform: translate(-50%, -50%) scale(1.3);
     }
 }
