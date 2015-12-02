@@ -15,6 +15,9 @@ var mySwiper = new Swiper('.swiper-container', {
             case 3 :
                 nowSlide.children(".left_section").addClass("leftDown");
                 nowSlide.children(".right_section").addClass("rightUp");
+                animationEnd(nowSlide.children(".right_section"), function () {
+                    $('.text').addClass("textMove");
+                });
                 break;
         }
     },
@@ -25,7 +28,7 @@ var mySwiper = new Swiper('.swiper-container', {
                 break;
             case 2 :
                 var move = $("#kobeMove");
-                move.addClass("kobeMove kobeanimate")
+                move.addClass("kobeMove kobeanimate");
                 break;
             case 3 :
                 break;
@@ -33,6 +36,6 @@ var mySwiper = new Swiper('.swiper-container', {
     }
 });
 
-var animationEnd = function () {
-    
+var animationEnd = function (obj,callback) {
+    obj.on("animationend webkitAnimationend",callback);
 }
