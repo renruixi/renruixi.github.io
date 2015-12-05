@@ -228,7 +228,7 @@ a, a:hover {
     -webkit-transform:translate3d(-50%,0,0);
     height: 150px;
     width: 200px;
-    background: url("../img/bighead.png") no-repeat;
+    background: url("../img/bigHead.png") no-repeat;
     background-size:200px 150px;
 }
 
