@@ -2,8 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
     <!-- 删除苹果默认的工具栏和菜单栏 -->
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-touch-fullscreen" content="yes"/>
@@ -36,35 +35,47 @@
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
+    <link rel="shortcut icon" href="img/favicon.ico">    
+
     <script src="lib/jquery-1.11.3.min.js"></script>
     <script src="lib/swipe/js/swiper.min.js"></script>
     <script src="lib/flexible/flexible.js"></script>
     <link rel="stylesheet" href="lib/swipe/css/swiper.min.css"/>
     <link rel="stylesheet" href="css/home.css"/>
-    <title>Kobe Bryant</title>
+    <title>萨摩耶金服</title>
 </head>
 
 <body>
-<section class="swiper-container">
-    <section class="swiper-wrapper">
-        <!-- 分页 -->
-        <section class="swiper-slide slide_1">
+    <section class="swiper-container">
+        <section class="swiper-wrapper">
+            <!-- 分页 -->
+            <section class="swiper-slide smy_1">
+                <div class="smy_eye">
+                    <div class="left_eye eye flex vertical horizonal">
+                        <!-- <div class="light"></div> -->
+                    </div>
+                    <div class="right_eye eye flex vertical horizonal">
+                        <!-- <div class="light"></div> -->
+                    </div>
+                    <div class="smy_big_head">
+                    </div>
+                </div>
+            </section>
+            <section class="swiper-slide smy_2">
 
-        </section>
-        <section class="swiper-slide slide_2">
-            <div class="moveTo">
-                <img src="img/kobe_move.png" id="kobeMove"/>
+            </section>
+            <section class="swiper-slide smy_3 flex">
+            <!-- <div class="left_section"></div>
+            <div class="right_section"></div> -->
+            <div class="smy_head">
+                <i class="head_before"></i>
             </div>
+            <span class="smy_download" style="display:none">
+                <button id="btnFootDownload">立即下载</button>
+            </span>
         </section>
-        <section class="swiper-slide slide_3">
-            <div class="left_section"></div>
-            <div class="right_section"></div>
-            <div class="slide_3_text">
-                <img src="img/title.png"/>
-                <i class="before"></i>
-            </div>
-        </section>
-    </section>
+    </section> 
+
     <!-- 分页器 -->
     <div class="swiper-pagination"></div>
 </section>

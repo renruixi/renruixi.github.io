@@ -187,7 +187,7 @@ a, a:hover {
     -webkit-transform: translate3d(0, 100%, 0);
 }
 
-.slide_3 .text {
+.slide_3 .slide_3_text {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -198,7 +198,7 @@ a, a:hover {
     opacity: 0;
 }
 
-.slide_3 .text .before {
+.slide_3 .slide_3_text .before {
     opacity: 0;
     width: 161px;
     height: 135px;
@@ -211,12 +211,12 @@ a, a:hover {
     transform: translate(-50%, -50%);
 }
 
-.text .bgMove {
+.slide_3_text .bgMove {
     animation: textbg ease-out 2.5s forwards;
     -webkit-animation: textbg 1.5s ease-out 0.1s forwards;
 }
 
-.text img {
+.slide_3_text img {
     display: block;
     width: 100%;
 }
