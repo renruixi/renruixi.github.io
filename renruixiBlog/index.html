@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-title" content="省呗"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/ruixi.css"/>
+    <script src="lib/jquery/jquery-2.1.4.min.js"></script>
+    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?type=quick&ak=yRdIVyPiaMXOtUNA2hhfLEkm&v=1.0"></script>
+
+    <title>再见旧时光的博客</title>
+</head>
+
+<body>
+<section id="blog_wrap">
+    <aside id="sideBar" class="sideBar nav col-md-3">
+        <div class="sideBar_head">
+            <h2 class="ruixi_logo"></h2>
+            <h4 class="ruixi_url"><a href="https://github.com/renruixi">https://github.com/renruixi</a></h4>
+        </div>
+        <ul class="sideBar_nav nav">
+            <li><a href="tpl/JavaScript.html"><i class="glyphicon glyphicon-certificate sideBar_icon"></i>神奇的javascript</a>
+            </li>
+            <li><a href="tpl/nodejs.html"><i class="glyphicon glyphicon-send sideBar_icon"></i>无所不能nodejs</a></li>
+            <li><a href="tpl/records.html"><i class="glyphicon glyphicon-pencil sideBar_icon"></i>陶冶情操的records</a></li>
+            <li><a href="tpl/technology.html"><i class="glyphicon glyphicon-usd sideBar_icon"></i>多多益善的tech</a></li>
+            <li><a href="tpl/css.html"><i class="glyphicon glyphicon-heart sideBar_icon"></i>变幻莫测的css</a></li>
+        </ul>
+    </aside>
+
+    <main class="col-md-9" style="padding: 0">
+        <main id="weather-background">
+            <canvas id="rain-canvas">
+
+            </canvas>
+
+            <canvas id="cloud-canvas">
+
+            </canvas>
+
+            <canvas id="weather-canvas">
+
+            </canvas>
+
+            <canvas id="time-canvas">
+
+            </canvas>
+            <canvas id="lightning-canvas">
+
+            </canvas>
+        </main>
+    </main>
+</section>
+<script src="js/weather.js"></script>
+<script>
+//    $(function () {
+//        GLoc.init();
+//        WeatherInfo.init();
+//        CanvasBackground.init();
+//    });
+</script>
+</body>
+</html>
