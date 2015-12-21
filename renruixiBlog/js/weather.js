@@ -40,7 +40,7 @@ var GLoc = {
                 "Access-Control-Allow-Origin": "*",
             },
             beforeSend : function (xhr) {
-                xhr.setRequestHeader("Access-Control-Allow-Origin : http://http://renruixi.github.io/renruixiBlog/")
+                xhr.setRequestHeader("Access-Control-Allow-Origin : http://renruixi.github.io/renruixiBlog/")
             },
             url: "http://ip.taobao.com/service/getIpInfo.php?ip=" + pos,
             type: "GET",
