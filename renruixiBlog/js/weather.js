@@ -2,7 +2,7 @@
  * Created by renruixi189 on 2015/12/21.
  */
 
-var addr;
+var addrIP;
 var GLoc = {
     settings: {
         geoErrorMessage: $('#geo-error-message'),
@@ -23,7 +23,6 @@ var GLoc = {
         } catch (e) {
             console.log(e);
         }
-
     },
 
     showGeoErrorMessageBanner: function () {
@@ -36,6 +35,9 @@ var GLoc = {
 
     geoSuccess: function (pos) {
         $.ajax({
+            headers : {
+                "Access-Control-Allow-Origin" : "http://renruixi.github.io",
+            },
             url: "http://ip.taobao.com/service/getIpInfo.php?ip=" + pos,
             type: "GET",
             dataType: "json",
@@ -44,6 +46,7 @@ var GLoc = {
             },
             error: function (XHR, textStatus, errorThrown) {
                 console.log("XHR=" + XHR + "\ntextStatus=" + textStatus + "\nerrorThrown=" + errorThrown);
+
             },
         })
 
@@ -60,7 +63,7 @@ var GLoc = {
                 $("body").append(data);
             },
             error: function (XHR, textStatus, errorThrown) {
-                alert("XHR=" + XHR + "\ntextStatus=" + textStatus + "\nerrorThrown=" + errorThrown);
+                console.log("XHR=" + XHR + "\ntextStatus=" + textStatus + "\nerrorThrown=" + errorThrown);
             },
         };
         $.ajax(settings);
