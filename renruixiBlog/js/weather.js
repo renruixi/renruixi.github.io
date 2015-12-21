@@ -40,16 +40,16 @@ var GLoc = {
     geoSuccess: function (pos) {
         $.ajax({
             headers: {
-                "Access-Control-Allow-Origin": "*",
-                "Content-Type": " text/html; charset=utf-8"
+                "apikey": "479c0fc5415d4580b4b7ea53d3c45c23"
             },
-
-            url: "http://ip.taobao.com/service/getIpInfo.php?ip=" + pos,
+            url: "http://apis.baidu.com/chazhao/ipsearch/ipsearch?ip=" + pos,
             type: "GET",
             dataType: "json",
             success: function (data) {
-                CP.city = data.city;
-                console.log(data);
+                var checkIPResult = data.data;
+                console.log(checkIPResult.city);
+                CP.city = checkIPResult.city.substr(0,checkIPResult.city.length-1);
+                console.log(CP.city);
                 WeatherInfo.getWeatherData(CP.city);
             },
             error: function (XHR, textStatus, errorThrown) {
@@ -68,7 +68,6 @@ GLoc.init();
 
 var w,
     WeatherInfo = {
-
         settings: {
             tempIcon: $('#temp-icon'),
             weather: $('#weather'),
@@ -95,10 +94,6 @@ var w,
             attributionModal: $('#attribution-links')
         },
 
-        //init: function () {
-        //    WeatherInfo.getWeatherData(city);
-        //},
-
         getWeatherData: function (city) {
             var searchQuery = 'http://apis.baidu.com/heweather/weather/free?city=' + city;
             var settings = {
@@ -122,7 +117,6 @@ var w,
 
         setWeatherData: function (data) {
             $('#front-page-description').addClass('hide');
-            w.weather.removeClass('hide');
             w.location.text(data.name + ', ' + data.sys.country);
             w.humidity.text(data.main.humidity);
             w.weatherDescription.text(data.weather[0].description);
@@ -212,7 +206,7 @@ var w,
             }
         }
     };
-WeatherInfo.getWeatherData("shenzhen");
+
 var c,
     CanvasBackground = {
         settings: {
