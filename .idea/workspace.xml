@@ -2,133 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c516c62-8ae5-4684-8b4d-881799a6575a" name="Default" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;newPage/index.html&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/css/font/FontAwesome.otf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/img/background.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/img/bigHead.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/img/common_and_head.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/img/corp_new.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/img/favicon.ico" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/css/font/fontawesome-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/css/font/fontawesome-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/css/font/fontawesome-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/css/fonts/glyphicons-halflings-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/bootstrap/fonts/glyphicons-halflings-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/css/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/bootstrap/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/css/fonts/glyphicons-halflings-regular.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/bootstrap/fonts/glyphicons-halflings-regular.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/css/fonts/glyphicons-halflings-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/bootstrap/fonts/glyphicons-halflings-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/img/head.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/img/head.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/img/ruixi.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/img/smyhead.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/img/textbg.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/img/title.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/tpl/JavaScript.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/lib/angular/angular-ui-router.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/lib/angular/angular.min.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/lib/angular/angular.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/css/animate.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/bootstrap/css/bootstrap-theme.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/bootstrap/css/bootstrap-theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/bootstrap/css/bootstrap-theme.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/bootstrap/css/bootstrap.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/bootstrap/css/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/bootstrap/js/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/bootstrap/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/bootstrap/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/tpl/css.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/flexible/flexible.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/lib/flexible/flexible.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/css/font/fontawesome-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/css/fonts/glyphicons-halflings-regular.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/bootstrap/fonts/glyphicons-halflings-regular.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/css/home.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/tpl/home.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/tpl/images.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/lib/jquery-1.11.3.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/jquery/jquery-2.1.4.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/flexible/makegrid.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/lib/flexible/makegrid.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/tpl/nodejs.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/bootstrap/js/npm.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/tpl/production.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/tpl/records.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/css/ruixi.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/lib/sea.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/js/smy.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/lib/swipe/js/swiper.animate1.0.2.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/Swiper/css/swiper.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/lib/swipe/css/swiper.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/Swiper/js/swiper.jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/lib/swipe/js/swiper.jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/Swiper/js/maps/swiper.jquery.min.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/lib/swipe/js/maps/swiper.jquery.min.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/Swiper/js/swiper.jquery.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/lib/swipe/js/swiper.jquery.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/Swiper/js/swiper.jquery.umd.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/lib/swipe/js/swiper.jquery.umd.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/Swiper/js/maps/swiper.jquery.umd.min.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/lib/swipe/js/maps/swiper.jquery.umd.min.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/Swiper/js/swiper.jquery.umd.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/lib/swipe/js/swiper.jquery.umd.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/Swiper/js/swiper.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/lib/swipe/js/swiper.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/Swiper/css/swiper.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/lib/swipe/css/swiper.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/Swiper/js/maps/swiper.min.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/lib/swipe/js/maps/swiper.min.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/lib/Swiper/js/swiper.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/smy/lib/swipe/js/swiper.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/tpl/technology.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/renruixiBlog/js/weather.js" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\README.md" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\css\animate.min.css" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\css\font\FontAwesome.otf" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\css\font\fontawesome-webfont.eot" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\css\font\fontawesome-webfont.svg" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\css\font\fontawesome-webfont.ttf" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\css\font\fontawesome-webfont.woff" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\css\home.css" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\img\head.png" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\img\kobe.png" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\img\kobe2.png" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\img\kobe3.png" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\img\kobe_half.png" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\img\kobe_move.png" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\img\nbabg.png" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\img\onear_half.png" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\img\textbg.png" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\img\title.png" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\lib\angular\angular-ui-router.min.js" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\lib\angular\angular.min.js" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\lib\angular\angular.min.js.map" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\lib\flexible\flexible.js" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\lib\flexible\makegrid.js" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\lib\jquery-1.11.3.min.js" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\lib\sea.js" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\lib\swipe\css\swiper.css" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\lib\swipe\css\swiper.min.css" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\lib\swipe\js\maps\swiper.jquery.min.js.map" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\lib\swipe\js\maps\swiper.jquery.umd.min.js.map" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\lib\swipe\js\maps\swiper.min.js.map" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\lib\swipe\js\swiper.animate1.0.2.min.js" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\lib\swipe\js\swiper.jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\lib\swipe\js\swiper.jquery.min.js" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\lib\swipe\js\swiper.jquery.umd.js" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\lib\swipe\js\swiper.jquery.umd.min.js" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\lib\swipe\js\swiper.js" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\lib\swipe\js\swiper.min.js" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\tpl\home.html" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\tpl\images.html" afterPath="" />
-      <change type="DELETED" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\tpl\production.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\index.html" afterPath="J:\学习工作文件\personal\renruixi.github.io\newPage\index.html" />
-      <change type="MODIFICATION" beforePath="J:\学习工作文件\personal\renruixi.github.io\newPage\js\kobe.js" afterPath="J:\学习工作文件\personal\renruixi.github.io\newPage\js\kobe.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/renruixiBlog/js/weather.js" afterPath="$PROJECT_DIR$/renruixiBlog/js/weather.js" />
     </list>
     <ignored path="renruixi.github.io.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -174,8 +48,8 @@
       <file leaf-file-name="weather.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/renruixiBlog/js/weather.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.67346936">
-              <caret line="48" column="31" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.4489796">
+              <caret line="42" column="114" selection-start-line="42" selection-start-column="114" selection-end-line="42" selection-end-column="114" />
               <folding>
                 <element signature="e#0#48#0" expanded="false" />
               </folding>
@@ -546,8 +420,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/renruixiBlog/js/weather.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67346936">
-          <caret line="48" column="31" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.4489796">
+          <caret line="42" column="114" selection-start-line="42" selection-start-column="114" selection-end-line="42" selection-end-column="114" />
           <folding>
             <element signature="e#0#48#0" expanded="false" />
           </folding>
