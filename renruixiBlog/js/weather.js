@@ -36,7 +36,7 @@ var GLoc = {
     geoSuccess: function (pos) {
         $.ajax({
             beforeSend : function(xhr){
-                xhr.setRequestHeader("Access-Control-Allow-Origin : http://renruixi.github.io")
+                xhr.setRequestHeader("Access-Control-Allow-Origin" , "http://renruixi.github.io")
             },
             url: "http://ip.taobao.com/service/getIpInfo.php?ip=" + pos,
             type: "GET",
