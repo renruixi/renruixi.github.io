@@ -1,4 +1,5 @@
-var mySwiper = new Swiper('.swiper-container', {
+var mySwiper;
+mySwiper = new Swiper('.swiper-container', {
     direction: 'vertical',
     loop: true,
     preloadImages: false,
@@ -6,7 +7,6 @@ var mySwiper = new Swiper('.swiper-container', {
     // 如果需要分页器
     pagination: '.swiper-pagination',
     onSlideChangeStart: function (swiper) {
-        console.log(swiper);
         var nowSlide = $('.slide_' + swiper.activeIndex);
         switch (swiper.activeIndex) {
             case 1 :
@@ -14,13 +14,13 @@ var mySwiper = new Swiper('.swiper-container', {
             case 2 :
                 break;
             case 3 :
-                var text = $('#text')
+                var title = $('#title');
                 nowSlide.children(".left_section").addClass("leftDown");
                 nowSlide.children(".right_section").addClass("rightUp");
                 animationEnd(nowSlide.children(".right_section"), function () {
-                    text.addClass("textMove");
-                    animationEnd(text, function () {
-                        text.find(".before").addClass("bgMove");
+                    $('#title').addClass("textMove");
+                    animationEnd(title, function () {
+                        title.find(".before").addClass("bgMove");
                     });
                 });
                 break;
