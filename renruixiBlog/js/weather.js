@@ -2,7 +2,11 @@
  * Created by renruixi189 on 2015/12/21.
  */
 
-var addrIP;
+var CP = {
+    addrIP: "14.215.165.178",
+    city: "深圳",
+    addrPro: "广东",
+};
 var GLoc = {
     settings: {
         geoErrorMessage: $('#geo-error-message'),
@@ -16,10 +20,10 @@ var GLoc = {
     getGeoLocation: function () {
         //baidu yRdIVyPiaMXOtUNA2hhfLEkm
         try {
-            addrIP = returnCitySN["cip"];
-            addrPro = returnCitySN["cname"];
+            CP.addrIP = returnCitySN["cip"] || CP.addrIP;
+            CP.addrPro = returnCitySN["cname"] || CP.addrPro;
 
-            this.geoSuccess(addrIP)
+            this.geoSuccess(CP.addrIP)
         } catch (e) {
             console.log(e);
         }
@@ -35,47 +39,28 @@ var GLoc = {
 
     geoSuccess: function (pos) {
         $.ajax({
-            beforeSend : function(xhr){
-                xhr.setRequestHeader("Access-Control-Allow-Origin" , "http://renruixi.github.io")
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Content-Type": " text/html; charset=utf-8"
             },
+
             url: "http://ip.taobao.com/service/getIpInfo.php?ip=" + pos,
             type: "GET",
             dataType: "json",
             success: function (data) {
+                CP.city = data.city;
                 console.log(data);
+                WeatherInfo.getWeatherData(CP.city);
             },
             error: function (XHR, textStatus, errorThrown) {
                 console.log("XHR=" + XHR + "\ntextStatus=" + textStatus + "\nerrorThrown=" + errorThrown);
-
+                GLoc.geoError();
             },
         })
-
-        g.searchQuery = 'http://apis.baidu.com/heweather/weather/free?city=深圳';
-        var settings = {
-            headers: {
-                "apikey": "479c0fc5415d4580b4b7ea53d3c45c23"
-            },
-            type: "GET",
-            url: w.searchQuery,
-            dataType: "json",
-            success: function (data) {
-                console.log(data);
-                $("body").append(data);
-            },
-            error: function (XHR, textStatus, errorThrown) {
-                console.log("XHR=" + XHR + "\ntextStatus=" + textStatus + "\nerrorThrown=" + errorThrown);
-            },
-        };
-        $.ajax(settings);
     },
 
-    geoError: function (error) {
-        var geoErrorMessageTimeoutId = setTimeout(GLoc.showGeoErrorMessageBanner, 5000);
-        switch (error.code) {
-            case error.TIMEOUT:
-                GLoc.showGeoErrorMessageBanner();
-                break;
-        }
+    geoError: function () {
+
     },
 };
 
@@ -110,37 +95,29 @@ var w,
             attributionModal: $('#attribution-links')
         },
 
-        init: function () {
-            w = this.settings;
-            w.searchLocationInput.keypress(function (e) {
-                if (e.keyCode === 13) {
-                    w.searchLocationButton.click();
-                }
-            });
-        },
+        //init: function () {
+        //    WeatherInfo.getWeatherData(city);
+        //},
 
-        getWeatherData: function (searchQuery) {
-            if (w.searchLocationInput.val() !== '') {
-
-                w.searchQuery = 'http://apis.baidu.com/heweather/weather/free?city=' + w.searchLocationInput.val() + '';
-                var settings = {
-                    headers: {
-                        "Access-Control-Allow-Origin": "http://example.edu",
-                        "apikey": "479c0fc5415d4580b4b7ea53d3c45c23"
-                    },
-                    type: "GET",
-                    url: w.searchQuery,
-                    dataType: "json",
-                    success: function (data) {
-                        console.log(data);
-                        $("body").append(data);
-                    },
-                    error: function (XHR, textStatus, errorThrown) {
-                        alert("XHR=" + XHR + "\ntextStatus=" + textStatus + "\nerrorThrown=" + errorThrown);
-                    },
-                };
-                $.ajax(settings);
-            }
+        getWeatherData: function (city) {
+            var searchQuery = 'http://apis.baidu.com/heweather/weather/free?city=' + city;
+            var settings = {
+                headers: {
+                    "apikey": "479c0fc5415d4580b4b7ea53d3c45c23"
+                },
+                type: "GET",
+                url: searchQuery,
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    WeatherInfo.setWeatherData(data);
+                },
+                crossDomain: true,
+                error: function (XHR, textStatus, errorThrown) {
+                    console.log("XHR=" + XHR + "\ntextStatus=" + textStatus + "\nerrorThrown=" + errorThrown);
+                },
+            };
+            $.ajax(settings);
         },
 
         setWeatherData: function (data) {
@@ -178,7 +155,6 @@ var w,
             } else if (292.5 < w.windDegree <= 337.5) {
                 w.windDirection.text('NW');
             }
-
         },
 
         isValid: function (weatherDataPiece) {
@@ -219,7 +195,6 @@ var w,
         },
 
         getDayOrNight: function (time, sunrise, sunset) {
-
             if (time >= sunrise && time < sunset) {
                 w.dayOrNight = 'daytime';
             } else if (time < sunrise) {
@@ -237,7 +212,7 @@ var w,
             }
         }
     };
-
+WeatherInfo.getWeatherData("shenzhen");
 var c,
     CanvasBackground = {
         settings: {
