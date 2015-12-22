@@ -1,10 +1,9 @@
 /**
  * Created by renruixi189 on 2015/12/21.
  */
-
-
-var g,
-    GLoc = {
+define(function (require, exports, module) {
+    var g;
+    var GLoc = {
         settings: {
             addrIP: "14.215.165.178",
             city: "深圳市",
@@ -53,10 +52,8 @@ var g,
         },
     };
 
-GLoc.init();
-
-var w,
-    WeatherInfo = {
+    var w;
+    var WeatherInfo = {
         settings: {
             tempIcon: $('#temp_icon'),
             weatherInfo: $('#weather_info'),
@@ -97,6 +94,7 @@ var w,
         },
 
         setWeatherData: function (result) {
+            console.log(result);
             seajs.use("./js/pinyin.js", function (pinyin) {
                 w.location.text(pinyin.getFullChars(result.basic.city) + ', ' + pinyin.getFullChars(result.basic.cnty));
                 w.temperature.text(result.now.tmp + "℃");
@@ -130,8 +128,8 @@ var w,
         }
     };
 
-var c,
-    CanvasBackground = {
+    var c;
+    var CanvasBackground = {
         settings: {
             weatherBackground: $('#weather_background'),
             weatherCanvas: $('#w_canvas')[0],
@@ -174,6 +172,7 @@ var c,
 
             switch (condition) {
                 case '雷阵雨':
+                case '阵雨':
                     CanvasBackground.clearAllCanvases();
                     c.weatherBackground.addClass('thunderstorm');
                     color_var = c.iconColor.thunderstorm;
@@ -200,6 +199,9 @@ var c,
                     CanvasBackground.animateTime();
                     break;
                 case '雪':
+                case "中雪":
+                case "小雪":
+                case "大雪":
                     CanvasBackground.clearAllCanvases();
                     c.weatherBackground.addClass('snow');
                     color_var = c.iconColor.snow;
@@ -207,6 +209,8 @@ var c,
                     CanvasBackground.animateTime();
                     break;
                 case '多云':
+                case '阴':
+                case '霾':
                     c.weatherBackground.addClass('clouds');
                     CanvasBackground.clearAllCanvases();
                     color_var = c.iconColor.clouds;
@@ -507,8 +511,7 @@ var c,
     };
 
 
-//define(function (require,exports,module) {
-//
-//    var
-//
-//})
+    module.exports = GLoc;
+});
+
+
