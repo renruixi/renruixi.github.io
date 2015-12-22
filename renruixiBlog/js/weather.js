@@ -2,96 +2,78 @@
  * Created by renruixi189 on 2015/12/21.
  */
 
-var CP = {
-    addrIP: "14.215.165.178",
-    city: "����",
-    addrPro: "�㶫",
-};
-var GLoc = {
-    settings: {
-        geoErrorMessage: $('#geo-error-message'),
-        searchQuery: '',
-    },
 
-    init: function () {
-        GLoc.getGeoLocation();
-    },
+var g,
+    GLoc = {
+        settings: {
+            addrIP: "14.215.165.178",
+            city: "深圳市",
+            addrPro: "广东省",
+        },
+        init: function () {
+            g = this.settings;
+            GLoc.getGeoLocation();
+        },
 
-    getGeoLocation: function () {
-        //baidu yRdIVyPiaMXOtUNA2hhfLEkm
-        try {
-            CP.addrIP = returnCitySN["cip"] || CP.addrIP;
-            CP.addrPro = returnCitySN["cname"] || CP.addrPro;
+        getGeoLocation: function () {
+            try {
+                g.addrIP = returnCitySN["cip"] || g.addrIP;   // check ip
+                g.addrPro = returnCitySN["cname"] || g.addrPro;   //check province
 
-            this.geoSuccess(CP.addrIP)
-        } catch (e) {
-            console.log(e);
-        }
-    },
+                this.geoSuccess(g.addrIP)  //get geo success handler
+            } catch (e) {
+                console.log(e);
+                GLoc.geoError();    //get geo error handler
+            }
+        },
 
-    showGeoErrorMessageBanner: function () {
-        g.geoErrorMessage.toggleClass('hide');
-    },
+        geoSuccess: function (pos) {
+            $.ajax({
+                headers: {
+                    "apikey": "479c0fc5415d4580b4b7ea53d3c45c23"
+                },
+                url: "http://apis.baidu.com/chazhao/ipsearch/ipsearch?ip=" + pos,
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    var checkIPResult = data.data;
+                    g.city = checkIPResult.city.substr(0, checkIPResult.city.length - 1);
+                    console.log(g.city);
+                    WeatherInfo.init(g.city);
+                },
+                error: function (XHR, textStatus, errorThrown) {
+                    console.log("XHR=" + XHR + "\ntextStatus=" + textStatus + "\nerrorThrown=" + errorThrown);
+                    GLoc.geoError();
+                },
+            })
+        },
 
-    hideGeoErrorMessageBanner: function () {
-        g.geoErrorMessage.addClass('hide');
-    },
-
-    geoSuccess: function (pos) {
-        $.ajax({
-            headers: {
-                "apikey": "479c0fc5415d4580b4b7ea53d3c45c23"
-            },
-            url: "http://apis.baidu.com/chazhao/ipsearch/ipsearch?ip=" + pos,
-            type: "GET",
-            dataType: "json",
-            success: function (data) {
-                var checkIPResult = data.data;
-                console.log(checkIPResult.city);
-                CP.city = checkIPResult.city.substr(0,checkIPResult.city.length-1);
-                console.log(CP.city);
-                WeatherInfo.getWeatherData(CP.city);
-            },
-            error: function (XHR, textStatus, errorThrown) {
-                console.log("XHR=" + XHR + "\ntextStatus=" + textStatus + "\nerrorThrown=" + errorThrown);
-                GLoc.geoError();
-            },
-        })
-    },
-
-    geoError: function () {
-
-    },
-};
+        geoError: function () {
+            WeatherInfo.init(g.city);
+        },
+    };
 
 GLoc.init();
 
 var w,
     WeatherInfo = {
         settings: {
-            tempIcon: $('#temp-icon'),
-            weather: $('#weather'),
-            weatherInfo: $('#weather-info'),
-            location: $('#location'),
-            weatherDescription: $('#weather-description'),
-            temperature: $('#temperature'),
-            tempNumber: '',
-            fahrenheit: $('#fahrenheit'),
+            tempIcon: $('#temp_icon'),
+            weatherInfo: $('#weather_info'),
+            location: $('#w_location'),
+            weatherDescription: $('#w_desc'),
+            temperature: $('#w_temp'),
             celsius: $('#celsius'),
-            wind: $('#wind'),
-            searchLocationInput: $('#search-location-input'),
-            searchLocationButton: $('#search-location-button'),
-            celsiusButton: $('#celsius'),
-            fahrenheitButton: $('#fahrenheit'),
-            humidity: $('#humidity'),
-            speedUnit: $('#speed-unit'),
-            windSpeed: '',
-            windDirection: $('#wind-direction'),
-            windDegree: '',
+            wind: $('#w_wind'),
+            pm25: $("#w_pm25"),
+            qlty: $("#w_qlty"),
+            windDirection: $('#wind_direction'),
             dayOrNight: '',
-            closeAttribution: $('#close-attribution'),
-            openAttribution: $('#noun-project'),
-            attributionModal: $('#attribution-links')
+        },
+
+        init: function (city) {
+            w = this.settings;
+            this.getWeatherData(city);
         },
 
         getWeatherData: function (city) {
@@ -104,10 +86,9 @@ var w,
                 url: searchQuery,
                 dataType: "json",
                 success: function (data) {
-                    console.log(data);
-                    WeatherInfo.setWeatherData(data);
+                    var result = data["HeWeather data service 3.0"][0];
+                    WeatherInfo.setWeatherData(result);
                 },
-                crossDomain: true,
                 error: function (XHR, textStatus, errorThrown) {
                     console.log("XHR=" + XHR + "\ntextStatus=" + textStatus + "\nerrorThrown=" + errorThrown);
                 },
@@ -115,77 +96,19 @@ var w,
             $.ajax(settings);
         },
 
-        setWeatherData: function (data) {
-            $('#front-page-description').addClass('hide');
-            w.location.text(data.name + ', ' + data.sys.country);
-            w.humidity.text(data.main.humidity);
-            w.weatherDescription.text(data.weather[0].description);
-            w.tempNumber = data.main.temp;
-            w.windSpeed = data.wind.speed;
-            w.windDegree = data.wind.deg;
-            WeatherInfo.getWeatherDirection();
-            WeatherInfo.changeTempUnit('celsius');
+        setWeatherData: function (result) {
+            seajs.use("./js/pinyin.js", function (pinyin) {
+                w.location.text(pinyin.getFullChars(result.basic.city) + ', ' + pinyin.getFullChars(result.basic.cnty));
+                w.temperature.text(result.now.tmp + "℃");
+                w.weatherDescription.text(result.now.cond.txt);
+                w.wind.text(result.now.wind.dir + result.now.wind.sc + "级");
+                w.pm25.text(result.aqi.city.pm25);
+                w.qlty.text(result.aqi.city.qlty);
+            });
             var time = Date.now() / 1000;
-            WeatherInfo.getDayOrNight(time, data.sys.sunrise, data.sys.sunset);
-            CanvasBackground.chooseBackground(data.weather[0].main);
-
-        },
-
-        getWeatherDirection: function () {
-            if (w.windDegree > 337.5 || w.windDegree <= 22.5) {
-                w.windDirection.text('N');
-            } else if (22.5 < w.windDegree <= 67.5) {
-                w.windDirection.text('NE');
-            } else if (67.5 < w.windDegree <= 112.5) {
-                w.windDirection.text('E');
-            } else if (112.5 < w.windDegree <= 157.5) {
-                w.windDirection.text('SE');
-            } else if (157.5 < w.windDegree <= 202.5) {
-                w.windDirection.text('S');
-            } else if (202.5 < w.windDegree <= 247.5) {
-                w.windDirection.text('SW');
-            } else if (247.5 < w.windDegree <= 292.5) {
-                w.windDirection.text('W');
-            } else if (292.5 < w.windDegree <= 337.5) {
-                w.windDirection.text('NW');
-            }
-        },
-
-        isValid: function (weatherDataPiece) {
-            if (typeof weatherDataPiece !== undefined) {
-                return weatherDataPiece + ' ';
-            } else {
-                return '';
-            }
-        },
-
-        changeTempUnit: function (unit) {
-            var newTemp = w.tempNumber - 273.15;
-            if (unit === 'celsius') {
-                w.celsius.addClass('checked');
-                w.fahrenheit.removeClass('checked');
-                w.temperature.addClass('celsius-degree');
-                w.temperature.removeClass('fahrenheit-degree');
-                w.temperature.html(Math.round(newTemp));
-                WeatherInfo.changeSpeedUnit('km');
-            } else if (unit === 'fahrenheit') {
-                w.temperature.html(Math.round(9 / 5 * newTemp + 32));
-                w.celsius.removeClass('checked');
-                w.fahrenheit.addClass('checked');
-                w.temperature.removeClass('celsius-degree');
-                w.temperature.addClass('fahrenheit-degree');
-                WeatherInfo.changeSpeedUnit('m');
-            }
-        },
-
-        changeSpeedUnit: function (unit) {
-            if (unit === 'km') {
-                w.wind.text('' + Math.round(w.windSpeed * 3.6));
-                w.speedUnit.text('km/h');
-            } else if (unit === 'm') {
-                w.wind.text('' + Math.round(w.windSpeed * 2.23694185194));
-                w.speedUnit.text('mph');
-            }
+            //WeatherInfo.getDayOrNight(time, sunrise,sunset);
+            //CanvasBackground.chooseBackground(result.now.cond.txt);
+            CanvasBackground.init(result.now.cond.txt);
         },
 
         getDayOrNight: function (time, sunrise, sunset) {
@@ -210,27 +133,16 @@ var w,
 var c,
     CanvasBackground = {
         settings: {
-            weatherBackground: $('#weather-background'),
-            weatherCanvas: $('#weather-canvas')[0],
-            weatherCTX: $('#weather-canvas')[0].getContext('2d'),
-            rainCanvas: $('#rain-canvas')[0],
-            rainCTX: $('#rain-canvas')[0].getContext('2d'),
-            cloudCanvas: $('#cloud-canvas')[0],
-            cloudCTX: $('#cloud-canvas')[0].getContext('2d'),
-            timeCanvas: $('#time-canvas')[0],
-            timeCTX: $('#time-canvas')[0].getContext('2d'),
-            lightningCanvas: $('#lightning-canvas')[0],
-            lightningCTX: $('#lightning-canvas')[0].getContext('2d'),
-            bgChoice: '',
+            weatherBackground: $('#weather_background'),
+            weatherCanvas: $('#w_canvas')[0],
+            weatherCTX: $('#w_canvas')[0].getContext('2d'),
             iconColor: {
                 defaultWeather: '#9AD4E0',
                 thunderstorm: '#717F8E',
                 drizzle: '#63A6CC',
                 rain: '#63A6CC',
                 snow: '#B5B9BB',
-                atmosphere: '#CED1DD',
                 clouds: '#6AB7E3',
-                extremeWeather: '#D3746B',
                 clearsky: '#9AD4E0',
             },
             requestRain: '',
@@ -240,41 +152,28 @@ var c,
             refreshIntervalID: ''
         },
 
-        init: function () {
+        init: function (condition) {
             c = this.settings;
-            CanvasBackground.setupCanvas();
-            CanvasBackground.chooseBackground();
+            CanvasBackground.setupCanvas(condition);
         },
 
-        setupCanvas: function () {
+        setupCanvas: function (condition) {
             CanvasBackground.resizeBackground();
             window.addEventListener('resize', CanvasBackground.resizeBackground, false);
             window.addEventListener('orientationchange', CanvasBackground.resizeBackground, false);
+            CanvasBackground.chooseBackground(condition);
         },
         resizeBackground: function () {
-            /* Resize the canvas to occupy the full page,
-             by getting the widow width and height and setting it to canvas*/
-
             c.weatherCanvas.width = window.innerWidth;
             c.weatherCanvas.height = window.innerHeight;
-            c.rainCanvas.width = window.innerWidth;
-            c.rainCanvas.height = window.innerHeight;
-            c.cloudCanvas.width = window.innerWidth;
-            c.cloudCanvas.height = window.innerHeight;
-            c.timeCanvas.width = window.innerWidth;
-            c.timeCanvas.height = window.innerHeight;
-            c.lightningCanvas.width = window.innerWidth;
-            c.lightningCanvas.height = window.innerHeight;
         },
 
         chooseBackground: function (condition) {
-            c.bgChoice = condition;
 
-            c.weatherBackground.removeClass();
             c.weatherBackground.addClass(w.dayOrNight);
 
             switch (condition) {
-                case 'Thunderstorm':
+                case '雷阵雨':
                     CanvasBackground.clearAllCanvases();
                     c.weatherBackground.addClass('thunderstorm');
                     color_var = c.iconColor.thunderstorm;
@@ -283,7 +182,7 @@ var c,
                     CanvasBackground.animateLightning();
                     CanvasBackground.animateTime();
                     break;
-                case 'Drizzle':
+                case '小雨':
                     c.weatherBackground.addClass('drizzle');
                     CanvasBackground.clearAllCanvases();
                     color_var = c.iconColor.drizzle;
@@ -291,7 +190,8 @@ var c,
                     CanvasBackground.animateClouds();
                     CanvasBackground.animateTime();
                     break;
-                case 'Rain':
+                case '中雨':
+                case '大雨':
                     CanvasBackground.clearAllCanvases();
                     c.weatherBackground.addClass('rain');
                     color_var = c.iconColor.rain;
@@ -299,42 +199,23 @@ var c,
                     CanvasBackground.animateClouds();
                     CanvasBackground.animateTime();
                     break;
-                case 'Snow':
+                case '雪':
                     CanvasBackground.clearAllCanvases();
                     c.weatherBackground.addClass('snow');
                     color_var = c.iconColor.snow;
                     CanvasBackground.animateSnow();
                     CanvasBackground.animateTime();
                     break;
-                case 'Fog' :
-                case 'Haze' :
-                case 'Mist' :
-                case 'Sand' :
-                case 'Dust' :
-                case 'Volcanic Ash' :
-                    CanvasBackground.clearAllCanvases();
-                    c.weatherBackground.addClass('atmosphere');
-                    color_var = c.iconColor.atmosphere;
-                    CanvasBackground.animateAtmosphere();
-                    CanvasBackground.animateTime();
-                    break;
-                case 'Clouds':
+                case '多云':
                     c.weatherBackground.addClass('clouds');
                     CanvasBackground.clearAllCanvases();
                     color_var = c.iconColor.clouds;
                     CanvasBackground.animateClouds();
                     CanvasBackground.animateTime();
                     break;
-                case 'Clear':
+                case '晴':
                     c.weatherBackground.addClass('clearsky');
                     CanvasBackground.clearAllCanvases();
-                    CanvasBackground.animateTime();
-                    break;
-                case 'Extreme':
-                    CanvasBackground.clearAllCanvases();
-                    c.weatherBackground.addClass('extreme-weather');
-                    color_var = c.iconColor.extremeWeather;
-                    CanvasBackground.animateExtreme();
                     CanvasBackground.animateTime();
                     break;
                 default:
@@ -347,7 +228,6 @@ var c,
         },
 
         getRandomBackground: function () {
-
             var possibleAnimations = [CanvasBackground.animateSnow, CanvasBackground.animateRain, CanvasBackground.animateClouds];
             var randomAnimation = Math.round(Math.random() * (possibleAnimations.length - 1));
             return possibleAnimations[randomAnimation]();
@@ -355,20 +235,12 @@ var c,
 
         clearAllCanvases: function () {
             clearInterval(c.refreshIntervalID);
-            cancelAnimationFrame(c.requestRain);
-            cancelAnimationFrame(c.requestCloud);
-            cancelAnimationFrame(c.requestWeather);
-            cancelAnimationFrame(c.requestTime);
             c.weatherCTX.clearRect(0, 0, c.weatherCanvas.width, c.weatherCanvas.height);
-            c.timeCTX.clearRect(0, 0, c.timeCanvas.width, c.timeCanvas.height);
-            c.rainCTX.clearRect(0, 0, c.rainCanvas.width, c.rainCanvas.height);
-            c.cloudCTX.clearRect(0, 0, c.cloudCanvas.width, c.cloudCanvas.height);
-            c.lightningCTX.clearRect(0, 0, c.lightningCanvas.width, c.lightningCanvas.height);
+            //c.timeCTX.clearRect(0, 0, c.timeCanvas.width, c.timeCanvas.height);
         },
 
         animateRain: function (condition) {
             var rainSvg = '<svg width="28px" height="39px" viewBox="0 0 28 39" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"><title>rain</title><desc>Created with Sketch.</desc><defs></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"><g id="rain" sketch:type="MSLayerGroup" transform="translate(-10.000000, -6.000000)" fill="' + color_var + '"><g id="Page-1" sketch:type="MSShapeGroup"><path d="M33.5,33.5 C33.5,40.1273333 28.1266667,45.5 21.5,45.5 C14.8726667,45.5 9.5,40.1273333 9.5,33.5 C9.5,21.5 21.5,3.50000001 21.5,3.50000001 C21.5,3.50000001 33.5,21.5 33.5,33.5 L33.5,33.5 L33.5,33.5 Z" id="rain" transform="translate(21.500000, 24.500000) rotate(-30.000000) translate(-21.500000, -24.500000) "></path></g></g></g></svg>';
-
 
             var rainDrops = [],
                 maxSpeed = 10,
@@ -377,7 +249,6 @@ var c,
                 n = innerWidth / spacing,
                 sizes = [[28, 39], [24, 33], [20, 28]],
                 i;
-
 
             if (condition === 'drizzle') {
                 rainSvg = '<svg width="28px" height="39px" viewBox="0 0 28 39" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"><title>rain</title><desc>Created with Sketch.</desc><defs></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"><g id="rain" sketch:type="MSLayerGroup" transform="translate(-10.000000, -6.000000)" fill="' + color_var + '"><g id="Page-1" sketch:type="MSShapeGroup"><path d="M33.5,33.5 C33.5,40.1273333 28.1266667,45.5 21.5,45.5 C14.8726667,45.5 9.5,40.1273333 9.5,33.5 C9.5,21.5 21.5,3.50000001 21.5,3.50000001 C21.5,3.50000001 33.5,21.5 33.5,33.5 L33.5,33.5 L33.5,33.5 Z" id="rain" transform="translate(21.500000, 24.500000) rotate(0.000000) translate(-21.500000, -24.500000) "></path></g></g></g></svg>';
@@ -398,8 +269,8 @@ var c,
                     xSpacing += spacing;
                     if (condition === 'drizzle') {
                         rainDrops.push({
-                            x: Math.round(Math.random() * c.rainCanvas.width),
-                            y: Math.round(Math.random() * c.rainCanvas.height),
+                            x: Math.round(Math.random() * c.weatherCanvas.width),
+                            y: Math.round(Math.random() * c.weatherCanvas.height),
                             width: Math.round(Math.random() * (innerWidth / 10)),
                             height: 1,
                             speed: Math.random() * maxSpeed + 2,
@@ -410,7 +281,7 @@ var c,
                     } else {
                         rainDrops.push({
                             x: xSpacing,
-                            y: Math.round(Math.random() * c.rainCanvas.height),
+                            y: Math.round(Math.random() * c.weatherCanvas.height),
                             width: 2,
                             height: Math.round(Math.random() * (innerHeight / 10)),
                             speed: Math.random() * maxSpeed + 5,
@@ -418,38 +289,33 @@ var c,
                             imgHeight: sizes[x][1]
                         });
                     }
-
                 }
-
             }
 
             function draw() {
                 var i;
-                c.rainCTX.clearRect(0, 0, c.rainCanvas.width, c.rainCanvas.height);
+                c.weatherCTX.clearRect(0, 0, c.weatherCanvas.width, c.weatherCanvas.height);
 
                 for (i = 0; i < n; i++) {
-                    c.rainCTX.drawImage(rainSource, rainDrops[i].x, rainDrops[i].y, rainDrops[i].imgWidth, rainDrops[i].imgHeight);
+                    c.weatherCTX.drawImage(rainSource, rainDrops[i].x, rainDrops[i].y, rainDrops[i].imgWidth, rainDrops[i].imgHeight);
                     if (condition === 'drizzle') {
                         rainDrops[i].y += rainDrops[i].speed;
                         rainDrops[i].x = rainDrops[i].x;
-                        if (rainDrops[i].y > c.rainCanvas.height) {
+                        if (rainDrops[i].y > c.weatherCanvas.height) {
                             rainDrops[i].y = 0 - rainDrops[i].height;
-                            rainDrops[i].x = Math.random() * c.rainCanvas.width;
+                            rainDrops[i].x = Math.random() * c.weatherCanvas.width;
                         }
                     } else {
                         rainDrops[i].y += rainDrops[i].speed;
                         rainDrops[i].x += rainDrops[i].speed / 2;
-                        if (rainDrops[i].y > c.rainCanvas.height)
+                        if (rainDrops[i].y > c.weatherCanvas.height)
                             rainDrops[i].y = 0 - rainDrops[i].height;
 
-                        if (rainDrops[i].x > c.rainCanvas.width)
+                        if (rainDrops[i].x > c.weatherCanvas.width)
                             rainDrops[i].x = 0;
                     }
                 }
-
-
                 c.requestRain = requestAnimationFrame(draw);
-
             }
 
             draw();
@@ -478,7 +344,7 @@ var c,
                     xSpacing += spacing;
                     cloudArray.push({
                         x: xSpacing,
-                        y: Math.round(Math.random() * c.cloudCanvas.height),
+                        y: Math.round(Math.random() * c.weatherCanvas.height),
                         width: 2,
                         height: Math.round(Math.random() * (innerHeight / 10)),
                         speed: Math.random() * maxSpeed + 1,
@@ -491,17 +357,17 @@ var c,
 
             function draw() {
                 var i;
-                c.cloudCTX.clearRect(0, 0, c.cloudCanvas.width, c.cloudCanvas.height);
+                c.weatherCTX.clearRect(0, 0, c.weatherCanvas.width, c.weatherCanvas.height);
 
                 for (i = 0; i < n; i++) {
-                    c.cloudCTX.drawImage(cloudArray[i].img, cloudArray[i].x, cloudArray[i].y, cloudArray[i].imgWidth, cloudArray[i].imgHeight);
+                    c.weatherCTX.drawImage(cloudArray[i].img, cloudArray[i].x, cloudArray[i].y, cloudArray[i].imgWidth, cloudArray[i].imgHeight);
                     cloudArray[i].y = cloudArray[i].y;
                     cloudArray[i].x += cloudArray[i].speed / 1.5;
 
-                    if (cloudArray[i].y > c.cloudCanvas.height)
+                    if (cloudArray[i].y > c.weatherCanvas.height)
                         cloudArray[i].y = 0 - cloudArray[i].height;
 
-                    if (cloudArray[i].x > c.cloudCanvas.width)
+                    if (cloudArray[i].x > c.weatherCanvas.width)
                         cloudArray[i].x = 0 - 100;
                 }
 
@@ -533,9 +399,9 @@ var c,
 
             function draw() {
                 var i;
-                c.timeCTX.clearRect(0, 0, c.timeCanvas.width, c.timeCanvas.height);
+                //c.timeCTX.clearRect(0, 0, c.timeCanvas.width, c.timeCanvas.height);
 
-                c.timeCTX.drawImage(timeSource, 25, 100);
+                //c.timeCTX.drawImage(timeSource, 25, 100);
 
                 c.requestTime = requestAnimationFrame(draw);
 
@@ -558,20 +424,20 @@ var c,
 
             function thunderDraw() {
                 var i;
-                c.lightningCTX.clearRect(0, 0, c.lightningCanvas.width, c.lightningCanvas.height);
+                c.weatherCTX.clearRect(0, 0, c.weatherCanvas.width, c.weatherCanvas.height);
 
                 function flash() {
 
-                    c.lightningCTX.fillStyle = 'rgba(255,255,255,.7)';
-                    c.lightningCTX.fillRect(0, 0, c.lightningCanvas.width, c.lightningCanvas.height);
+                    c.weatherCTX.fillStyle = 'rgba(255,255,255,.7)';
+                    c.weatherCTX.fillRect(0, 0, c.weatherCanvas.width, c.weatherCanvas.height);
 
-                    var locx = Math.random() * (c.lightningCanvas.width - 165);
-                    var locy = Math.random() * (c.lightningCanvas.height - 478);
-                    c.lightningCTX.drawImage(lightningIMG, locx, locy);
+                    var locx = Math.random() * (c.weatherCanvas.width - 165);
+                    var locy = Math.random() * (c.weatherCanvas.height - 478);
+                    c.weatherCTX.drawImage(lightningIMG, locx, locy);
 
 
                     function flashOff() {
-                        c.lightningCTX.clearRect(0, 0, c.lightningCanvas.width, c.lightningCanvas.height);
+                        c.weatherCTX.clearRect(0, 0, c.weatherCanvas.width, c.weatherCanvas.height);
                     }
 
                     setInterval(flashOff, 100);
@@ -581,62 +447,6 @@ var c,
                 c.refreshIntervalID = setInterval(flash, 5000);
 
             }
-        },
-
-        animateAtmosphere: function () {
-            var atmosphereSvg = '<svg width="96px" height="84px" viewBox="0 0 96 84" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"><title>Shape</title><desc>Created with Sketch.</desc><defs></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"><g id="smoke" sketch:type="MSLayerGroup" transform="translate(-2.000000, 0.000000)" fill="' + color_var + '" fill-opacity=".5"><path d="M95.117,29.243 C97.344,27.148 97.949,23.727 96.388,20.943 C94.552,17.664 90.386,16.49 87.105,18.329 L86.942,18.42 C85.658,17.878 84.293,17.539 82.895,17.417 C83.716,14.407 83.501,11.099 82.026,8.082 C78.8,1.481 70.802,-1.263 64.202,1.962 C62.176,2.953 60.464,4.417 59.187,6.217 C54.886,2.788 48.852,2.013 43.736,4.512 C36.756,7.924 33.731,16.227 36.765,23.289 C34.461,24.777 32.927,27.152 32.445,29.772 C32.317,29.935 32.175,30.084 32.056,30.253 C27.755,26.823 21.72,26.048 16.604,28.548 C9.626,31.96 6.6,40.263 9.634,47.326 C6.615,49.274 4.907,52.743 5.171,56.297 C2.832,58.262 2.032,61.644 3.434,64.51 C3.82,65.301 4.343,65.976 4.955,66.534 C3.606,71.46 5.152,76.941 9.347,80.379 C15.031,85.035 23.446,84.196 28.1,78.515 C29.53,76.769 30.475,74.725 30.886,72.556 C34.082,73.35 37.446,73.011 40.408,71.671 C43.547,72.414 46.958,72.044 49.986,70.346 C51.954,69.244 53.58,67.687 54.753,65.816 C59.239,69 65.309,69.432 70.275,66.651 C73.293,64.956 75.467,62.338 76.655,59.349 C79.565,59.654 82.574,59.098 85.261,57.59 C91.673,53.996 94.297,46.234 91.66,39.58 C93.289,37.766 94.366,35.546 94.824,33.185 C95.184,31.921 95.293,30.579 95.117,29.243 L95.117,29.243 Z" id="Shape" sketch:type="MSShapeGroup"></path></g></g></svg>';
-
-            // Create a Data URI.
-            var atmosphereSrc = 'data:image/svg+xml;base64,' + window.btoa(atmosphereSvg);
-
-            // Load up our image.
-            var atmosphereSource = new Image();
-            atmosphereSource.src = atmosphereSrc;
-
-            var atmosphereArray = [],
-                maxSpeed = 2,
-                spacing = 20,
-                xSpacing = 0,
-                n = innerWidth / spacing,
-                sizes = [[200, 150], [300, 200]],
-                i;
-
-            for (i = 0; i < n; i++) {
-                for (x = 0; x < sizes.length; x++) {
-                    xSpacing += spacing;
-                    atmosphereArray.push({
-                        x: xSpacing,
-                        y: Math.round(Math.random() * c.weatherCanvas.height),
-                        width: 2,
-                        height: Math.round(Math.random() * (innerHeight / 10)),
-                        speed: Math.random() * maxSpeed + 1,
-                        imgWidth: sizes[x][0],
-                        imgHeight: sizes[x][1],
-                        img: atmosphereSource
-                    });
-                }
-            }
-
-            function draw() {
-                var i;
-                c.weatherCTX.clearRect(0, 0, c.weatherCanvas.width, c.weatherCanvas.height);
-                for (i = 0; i < n; i++) {
-                    c.weatherCTX.drawImage(atmosphereArray[i].img, atmosphereArray[i].x, atmosphereArray[i].y, atmosphereArray[i].imgWidth, atmosphereArray[i].imgHeight);
-                    atmosphereArray[i].y = atmosphereArray[i].y;
-                    atmosphereArray[i].x += atmosphereArray[i].speed / 1.5;
-
-                    if (atmosphereArray[i].y > c.weatherCanvas.height)
-                        atmosphereArray[i].y = 0 - atmosphereArray[i].height;
-
-                    if (atmosphereArray[i].x > c.weatherCanvas.width)
-                        atmosphereArray[i].x = 0 - 300;
-                }
-
-                c.requestWeather = requestAnimationFrame(draw);
-
-            }
-
-            draw();
         },
 
         animateSnow: function () {
@@ -689,68 +499,16 @@ var c,
                     if (snowArray[i].x > c.weatherCanvas.width)
                         snowArray[i].x = 0 - 100;
                 }
-
                 c.requestWeather = requestAnimationFrame(draw);
-
             }
 
             draw();
         },
-
-        animateExtreme: function () {
-            var extremeSvg = '<svg width="80px" height="75px" viewBox="0 0 80 75" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"><title>warning</title><desc>Created with Sketch.</desc><defs></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"><g id="Artboard" sketch:type="MSArtboardGroup" fill="' + color_var + '"><g id="warning" sketch:type="MSLayerGroup"><path d="M35.59,2.789 L1.406,64.359 C-1.438,69.543 -0.23,74.5 7.457,74.5 L72.539,74.5 C80.244,74.5 81.435,69.543 78.59,64.359 L43.699,2.953 C42.992,1.57 41.965,0.042 39.785,0.062 C37.467,0.104 36.316,1.406 35.59,2.789 L35.59,2.789 Z M35.5,22.5 L43.5,22.5 L43.5,50.5 L35.5,50.5 L35.5,22.5 L35.5,22.5 Z M35.5,56.5 L43.5,56.5 L43.5,64.5 L35.5,64.5 L35.5,56.5 L35.5,56.5 Z" id="Shape" sketch:type="MSShapeGroup"></path></g></g></g></svg>';
-
-            // Create a Data URI.
-            var extremeSrc = 'data:image/svg+xml;base64,' + window.btoa(extremeSvg);
-
-            // Load up our image.
-            var extremeSource = new Image();
-            extremeSource.src = extremeSrc;
-
-            var extremeArray = [],
-                spacing = 50,
-                xSpacing = 0,
-                n = innerWidth / spacing,
-                sizes = [[89, 100], [50, 56.18], [70, 78.65]],
-                i;
-
-            for (i = 0; i < n; i++) {
-                for (x = 0; x < sizes.length; x++) {
-                    xSpacing += spacing;
-                    extremeArray.push({
-                        x: Math.round(Math.random() * c.weatherCanvas.width),
-                        y: Math.round(Math.random() * c.weatherCanvas.height),
-                        width: 2,
-                        height: Math.round(Math.random() * (innerHeight / 10)),
-                        imgWidth: sizes[x][0],
-                        imgHeight: sizes[x][1],
-                        img: extremeSource
-                    });
-                }
-            }
-
-            function draw() {
-                var i;
-                c.weatherCTX.clearRect(0, 0, c.weatherCanvas.width, c.weatherCanvas.height);
-                for (i = 0; i < n; i++) {
-                    c.weatherCTX.drawImage(extremeArray[i].img, extremeArray[i].x, extremeArray[i].y, extremeArray[i].imgWidth, extremeArray[i].imgHeight);
-
-                    extremeArray[i].y += 1;
-                    extremeArray[i].x = extremeArray[i].x;
-
-                    if (extremeArray[i].y > c.weatherCanvas.height) {
-                        extremeArray[i].y = 0 - 100;
-                        extremeArray[i].x = Math.random() * c.weatherCanvas.width;
-                    }
-
-                    if (extremeArray[i].x > c.weatherCanvas.width)
-                        extremeArray[i].x = 0 - 300;
-
-                }
-
-                c.requestWeather = requestAnimationFrame(draw);
-            }
-
-            draw();
-        }
     };
+
+
+//define(function (require,exports,module) {
+//
+//    var
+//
+//})
