@@ -165,6 +165,7 @@ define(function (require, exports, module) {
             switch (condition) {
                 case '雷阵雨':
                 case '阵雨':
+                case '霾':
                     CanvasBackground.clearAllCanvases();
                     c.weatherBackground.addClass('thunderstorm');
                     color_var = c.iconColor.thunderstorm;
@@ -202,7 +203,7 @@ define(function (require, exports, module) {
                     break;
                 case '多云':
                 case '阴':
-                case '霾':
+                case '雾' :
                     c.weatherBackground.addClass('clouds');
                     CanvasBackground.clearAllCanvases();
                     color_var = c.iconColor.clouds;

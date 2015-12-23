@@ -37,6 +37,7 @@
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <link rel="stylesheet" href="../css/blog.css"/>
+    <script src="../lib/jquery/jquery-2.1.4.min.js"></script>
     <title>再见旧时光的博客</title>
 </head>
 
@@ -74,28 +75,93 @@
     <div id="right-panel" class="panel">
         <ul id="menu-%e8%8f%9c%e5%8d%95-1" class="ymod-head">
             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6"><a
-                    href="http://www.wpke.net/">Home</a></li>
+                    href="https://github.com/renruixi">Home</a></li>
             <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-8 current_page_item menu-item-16">
-                <a href="http://www.wpke.net/blog">Blog</a></li>
+                <a href="blog.html">Blog</a></li>
             <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-21"><a
-                    href="http://www.wpke.net/./black-technology">Black Tech</a></li>
+                    href="tech.html">Black Tech</a></li>
             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15"><a
-                    href="http://www.wpke.net/tags">Tags</a></li>
+                    href="tags.html">Tags</a></li>
             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14"><a
-                    href="http://www.wpke.net/links">Links</a></li>
+                    href="links.html">Links</a></li>
             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19"><a
-                    href="http://www.wpke.net/about">About</a></li>
+                    href="about.html">About</a></li>
             <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-121"><a
-                    href="http://www.wpke.net/service">Service</a></li>
+                    href="service.html">Service</a></li>
         </ul>
         <button id="close-panel-bt">Close</button>
     </div>
-    <script src="http://www.wpke.net/wp-content/themes/abctheme/js/slider.js"></script>
-    <script>$('#right-panel-link').panelslider({side: 'right', duration: 200});
-    $('#close-panel-bt').click(function () {
-        $.panelslider.close();
-    });
+    <script src="../lib/slider.js"></script>
+    <script>
+        $('#right-panel-link').panelslider({side: 'right', duration: 200});
+        $('#close-panel-bt').click(function () {
+            $.panelslider.close();
+        });
     </script>
 </header>
+
+<article class="mod-archive">
+    <div class="mod-archive__item">
+
+        <div id="2015" class="mod-archive__year">2015</div>
+        <ul class="mod-archive__list">
+            <li>
+                <time class="mod-archive__time" datetime="2015-11-29 09:09:00">2015-11-29</time>
+                <span>—</span> <a href="http://www.wpke.net/record/114.html" title="我和一个零零后聊了一周 QQ">我和一个零零后聊了一周 QQ</a>
+            </li>
+            <li>
+                <time class="mod-archive__time" datetime="2015-03-29 06:45:43">2015-03-29</time>
+                <span>—</span> <a href="http://www.wpke.net/black-technology/111.html" title="前端必备：CSS工具">前端必备：CSS工具</a>
+            </li>
+        </ul>
+        <div id="2015" class="mod-archive__year">2014</div>
+        <ul class="mod-archive__list">
+            <li>
+                <time class="mod-archive__time" datetime="2014-12-04 03:52:42">2014-12-04</time>
+                <span>—</span> <a href="http://www.wpke.net/record/96.html" title="最好的时光，莫过于雨天路过。">最好的时光，莫过于雨天路过。</a>
+            </li>
+            <li>
+                <time class="mod-archive__time" datetime="2014-11-20 03:37:43">2014-11-20</time>
+                <span>—</span> <a href="http://www.wpke.net/record/92.html"
+                                  title="节奏打转，还需要多久多长…多渴望。">节奏打转，还需要多久多长…多渴望。</a></li>
+            <li>
+                <time class="mod-archive__time" datetime="2014-10-11 08:09:10">2014-10-11</time>
+                <span>—</span> <a href="http://www.wpke.net/record/83.html" title="一种理想的前端生态">一种理想的前端生态</a></li>
+            <li>
+                <time class="mod-archive__time" datetime="2014-08-06 07:33:31">2014-08-06</time>
+                <span>—</span> <a href="http://www.wpke.net/record/71.html" title="请叫我艺术家！iPad手绘习作">请叫我艺术家！iPad手绘习作</a>
+            </li>
+            <li>
+                <time class="mod-archive__time" datetime="2014-06-21 07:59:53">2014-06-21</time>
+                <span>—</span> <a href="http://www.wpke.net/record/81.html" title="成熟這種病">成熟這種病</a></li>
+        </ul>
+        <div id="2015" class="mod-archive__year">2013</div>
+        <ul class="mod-archive__list">
+            <li>
+                <time class="mod-archive__time" datetime="2013-07-29 02:42:45">2013-07-29</time>
+                <span>—</span> <a href="http://www.wpke.net/record/39.html" title="从莫斯科回到伟大祖国的怀抱">从莫斯科回到伟大祖国的怀抱</a></li>
+            <li>
+                <time class="mod-archive__time" datetime="2013-02-13 10:05:21">2013-02-13</time>
+                <span>—</span> <a href="http://www.wpke.net/black-technology/52.html" title="Emmet：HTML/CSS代码快速编写神器">Emmet：HTML/CSS代码快速编写神器</a>
+            </li>
+        </ul>
+        <div id="2015" class="mod-archive__year">2012</div>
+        <ul class="mod-archive__list">
+            <li>
+                <time class="mod-archive__time" datetime="2012-07-02 08:12:16">2012-07-02</time>
+                <span>—</span> <a href="http://www.wpke.net/record/48.html" title="谁先爱了，谁就输了。">谁先爱了，谁就输了。</a></li>
+            <li>
+                <time class="mod-archive__time" datetime="2012-04-16 02:24:50">2012-04-16</time>
+                <span>—</span> <a href="http://www.wpke.net/record/37.html" title="设计师应该学代码？停止争论吧">设计师应该学代码？停止争论吧</a>
+            </li>
+            <li>
+                <time class="mod-archive__time" datetime="2012-04-11 02:21:09">2012-04-11</time>
+                <span>—</span> <a href="http://www.wpke.net/record/33.html" title="你遇到问题了，不是我">你遇到问题了，不是我</a></li>
+            <li>
+                <time class="mod-archive__time" datetime="2012-03-11 01:37:13">2012-03-11</time>
+                <span>—</span> <a href="http://www.wpke.net/record/1.html" title="世界，您好！">世界，您好！</a></li>
+        </ul>
+    </div>
+</article>
 </body>
 </html>
