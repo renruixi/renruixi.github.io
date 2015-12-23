@@ -60,11 +60,6 @@ define(function (require, exports, module) {
             location: $('#w_location'),
             weatherDescription: $('#w_desc'),
             temperature: $('#w_temp'),
-            celsius: $('#celsius'),
-            wind: $('#w_wind'),
-            pm25: $("#w_pm25"),
-            qlty: $("#w_qlty"),
-            windDirection: $('#wind_direction'),
             dayOrNight: '',
         },
 
@@ -99,9 +94,6 @@ define(function (require, exports, module) {
                 w.location.text(pinyin.getFullChars(result.basic.city) + ', ' + pinyin.getFullChars(result.basic.cnty));
                 w.temperature.text(result.now.tmp + "℃");
                 w.weatherDescription.text(result.now.cond.txt);
-                w.wind.text(result.now.wind.dir + result.now.wind.sc + "级");
-                w.pm25.text(result.aqi.city.pm25);
-                w.qlty.text(result.aqi.city.qlty);
             });
             var time = Date.now() / 1000;
             //WeatherInfo.getDayOrNight(time, sunrise,sunset);
@@ -509,7 +501,6 @@ define(function (require, exports, module) {
             draw();
         },
     };
-
 
     module.exports = GLoc;
 });

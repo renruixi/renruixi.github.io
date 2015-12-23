@@ -1,26 +1,91 @@
 
-html, body {
+* {
+    margin: 0;
+    padding: 0
+}
+
+html,body {
+    position: relative;
+    height:100%;
+    width:100%;
+    font: 400 16px/1.62 Georgia, "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+    color: #535353;
+}
+
+em{
+    font-style: normal;
+}
+
+.ruixi {
+    z-index: 999;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 500px;
+    padding: 100px 20px 0;
+    animation: fade-in;
+    animation-duration: 1s;
+    -webkit-animation: fade-in 1s;
+}
+
+.ruixi a {
+    color: #535353;
+    text-decoration: underline
+}
+
+.ruixi a:link, .ruixi a:visited {
+    color: #535353;
+    text-decoration: underline
+}
+
+.ruixi span{
+    color: #535353;
+}
+
+h1 {
+    font-size: 26px;
+    color: #424242;
+    margin-bottom: 20px
+}
+
+.avatar {
+    margin-bottom: 35px;
+    border-radius: 64px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5)
+}
+
+.nav a {
+    padding: 0 6px 0 6px
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0
+    }
+    40% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fade-in {
+    0% {
+        opacity: 0
+    }
+    40% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+.ruixi_blog {
+    position: relative;
+    z-index: 999;
     width: 100%;
-    height: 100%;
-}
-
-body {
-    color: #5a5350;
-    font-weight: 300;
-    font-family: 'Lato', Calibri, Arial, sans-serif;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    font-size: 16px;
-}
-
-a, a:hover {
-    color: #333;
-}
-
-*, *:after, *:before {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+    height:100%;
 }
 
 .clearfix:before,
@@ -96,82 +161,14 @@ a, a:hover {
     font-style: normal;
 }
 
-#blog_wrap, #sideBar {
-    height: 100%;
-    min-height: 100%;
-}
-
-#sideBar {
-    padding: 0;
-    margin: 0;
-}
-
-#sideBar .sideBar_head {
-    position: relative;
-    height: 300px;
-    text-align: center;
-    background: url("../img/background.jpg") no-repeat;
-    -webkit-background-size: cover;
-    background-size: cover;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-}
-
-#sideBar .ruixi_logo {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin: auto;
-    background-image: url("../img/head.jpg");
-    -webkit-background-size: cover;
-    background-size: cover;
-    -webkit-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
-}
-
-#sideBar .ruixi_logo:hover {
-    background-image: url("../img/ruixi.jpg");
-}
-
-#sideBar .ruixi_url {
-    margin-top: 20px;
-}
-
-#sideBar .sideBar_nav a {
-    color: #212121;
-    position: relative;
-    cursor: pointer;
-    user-select: none;
-    display: block;
-    height: 48px;
-    line-height: 48px;
-    padding: 0 56px 0 16px;
-    text-decoration: none;
-    clear: both;
-    font-weight: 500;
-    overflow: hidden;
-    -o-text-overflow: ellipsis;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    -webkit-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
-}
-
-#sideBar .sideBar_icon {
-    display: inline-block;
-    margin-right: 18px;
-    min-width: 30px;
-    width: 30px;
-    text-align: left;
-}
-
-
 /*weather info */
 #weather_background {
-    position: relative;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index:-1;
     height:100%;
+    width:100%;
     background-color: #6FC2D4;
 }
 
@@ -229,13 +226,4 @@ a, a:hover {
     text-align: center;
 }
 
-.weather_info .w_location {
-    /*font-size: 16px;*/
-    color: #000;
-}
-
-.weather_info .w_temp {
-    font-size: 50px;
-    color: #000;
-}
 

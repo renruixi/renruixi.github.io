@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-title" content="省呗"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <link rel="stylesheet" href="../css/blog.css"/>
+    <title>再见旧时光的博客</title>
+</head>
+
+<body>
+<header class="mod-head">
+    <h1 class="mod-head__title"><a href="http://www.wpke.net">进击的ruixi</a></h1>
+
+    <div class="mod-head__logo">
+        <a href="https://github.com/renruixi">
+            <img class="avatar" src="../img/head.jpg" alt="" width="26"
+                 height="26">
+        </a>
+    </div>
+    <nav class="mod-head__nav">
+        <ul id="menu-%e8%8f%9c%e5%8d%95" class="mod-head__ul">
+            <li id="menu-item-6" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6"><a
+                    href="https://github.com/renruixi">Home</a><span>·</span></li>
+            <li id="menu-item-16"
+                class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-8 current_page_item menu-item-16">
+                <a href="blog.html">Blog</a><span>·</span></li>
+            <li id="menu-item-21" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-21"><a
+                    href="tech.html">Black Tech</a><span>·</span></li>
+            <li id="menu-item-15" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15"><a
+                    href="tags.html">Tags</a><span>·</span></li>
+            <li id="menu-item-14" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14"><a
+                    href="links.html">Links</a><span>·</span></li>
+            <li id="menu-item-19" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19"><a
+                    href="about.html">About</a><span>·</span></li>
+            <li id="menu-item-121" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-121"><a
+                    href="service.html">Service</a></li>
+        </ul>
+    </nav>
+    <a id="right-panel-link" href="#right-panel"></a>
+
+    <div id="right-panel" class="panel">
+        <ul id="menu-%e8%8f%9c%e5%8d%95-1" class="ymod-head">
+            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6"><a
+                    href="http://www.wpke.net/">Home</a></li>
+            <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-8 current_page_item menu-item-16">
+                <a href="http://www.wpke.net/blog">Blog</a></li>
+            <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-21"><a
+                    href="http://www.wpke.net/./black-technology">Black Tech</a></li>
+            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15"><a
+                    href="http://www.wpke.net/tags">Tags</a></li>
+            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14"><a
+                    href="http://www.wpke.net/links">Links</a></li>
+            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19"><a
+                    href="http://www.wpke.net/about">About</a></li>
+            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-121"><a
+                    href="http://www.wpke.net/service">Service</a></li>
+        </ul>
+        <button id="close-panel-bt">Close</button>
+    </div>
+    <script src="http://www.wpke.net/wp-content/themes/abctheme/js/slider.js"></script>
+    <script>$('#right-panel-link').panelslider({side: 'right', duration: 200});
+    $('#close-panel-bt').click(function () {
+        $.panelslider.close();
+    });
+    </script>
+</header>
+</body>
+</html>

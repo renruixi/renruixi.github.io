@@ -36,51 +36,184 @@
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
-    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/ruixi.css"/>
+    <script>
+        ;(function(win, lib) {
+            var doc = win.document;
+            var docEl = doc.documentElement;
+            var metaEl = doc.querySelector('meta[name="viewport"]');
+            var flexibleEl = doc.querySelector('meta[name="flexible"]');
+            var dpr = 0;
+            var scale = 0;
+            var tid;
+            var flexible = lib.flexible || (lib.flexible = {});
+
+            if (metaEl) {
+                console.warn('将根据已有的meta标签来设置缩放比例');
+                var match = metaEl.getAttribute('content').match(/initial\-scale=([\d\.]+)/);
+                if (match) {
+                    scale = parseFloat(match[1]);
+                    dpr = parseInt(1 / scale);
+                }
+            } else if (flexibleEl) {
+                var content = flexibleEl.getAttribute('content');
+                if (content) {
+                    var initialDpr = content.match(/initial\-dpr=([\d\.]+)/);
+                    var maximumDpr = content.match(/maximum\-dpr=([\d\.]+)/);
+                    if (initialDpr) {
+                        dpr = parseFloat(initialDpr[1]);
+                        scale = parseFloat((1 / dpr).toFixed(2));
+                    }
+                    if (maximumDpr) {
+                        dpr = parseFloat(maximumDpr[1]);
+                        scale = parseFloat((1 / dpr).toFixed(2));
+                    }
+                }
+            }
+
+            if (!dpr && !scale) {
+                var isAndroid = win.navigator.appVersion.match(/android/gi);
+                var isIPhone = win.navigator.appVersion.match(/iphone/gi);
+                var devicePixelRatio = win.devicePixelRatio;
+                if (isIPhone) {
+                    // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案
+                    if (devicePixelRatio >= 3 && (!dpr || dpr >= 3)) {
+                        dpr = 3;
+                    } else if (devicePixelRatio >= 2 && (!dpr || dpr >= 2)){
+                        dpr = 2;
+                    } else {
+                        dpr = 1;
+                    }
+                } else {
+                    // 其他设备下，仍旧使用1倍的方案
+                    dpr = 1;
+                }
+                scale = 1 / dpr;
+            }
+
+            docEl.setAttribute('data-dpr', dpr);
+            if (!metaEl) {
+                metaEl = doc.createElement('meta');
+                metaEl.setAttribute('name', 'viewport');
+                metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+                if (docEl.firstElementChild) {
+                    docEl.firstElementChild.appendChild(metaEl);
+                } else {
+                    var wrap = doc.createElement('div');
+                    wrap.appendChild(metaEl);
+                    doc.write(wrap.innerHTML);
+                }
+            }
+
+            function refreshRem(){
+                var width = docEl.getBoundingClientRect().width;
+                if (width / dpr > 540) {
+                    width = 540 * dpr;
+                }
+                var rem = width / 10;
+                docEl.style.fontSize = rem + 'px';
+                flexible.rem = win.rem = rem;
+            }
+
+            win.addEventListener('resize', function() {
+                clearTimeout(tid);
+                tid = setTimeout(refreshRem, 300);
+            }, false);
+            win.addEventListener('pageshow', function(e) {
+                if (e.persisted) {
+                    clearTimeout(tid);
+                    tid = setTimeout(refreshRem, 300);
+                }
+            }, false);
+
+            refreshRem();
+
+            flexible.dpr = win.dpr = dpr;
+            flexible.refreshRem = refreshRem;
+            flexible.rem2px = function(d) {
+                var val = parseFloat(d) * this.rem;
+                if (typeof d === 'string' && d.match(/rem$/)) {
+                    val += 'px';
+                }
+                return val;
+            }
+            flexible.px2rem = function(d) {
+                var val = parseFloat(d) / this.rem;
+                if (typeof d === 'string' && d.match(/px$/)) {
+                    val += 'rem';
+                }
+                return val;
+            }
+
+        })(window, window['lib'] || (window['lib'] = {}));
+    </script>
+    <link rel="stylesheet" href="css/index.css"/>
     <script src="lib/sea.js"></script>
     <script src="lib/jquery/jquery-2.1.4.min.js"></script>
     <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+    <script>
+        $(function () {
+            $(window).on("resize load", function () {
+                setHeight();
+            })
+
+            function setHeight(){
+                if( $("#ruixi").outerHeight() > $("html").outerHeight()){
+                    $("#ruixi").height("100%");
+                    $("#weather_background").height($("#ruixi").outerHeight());
+                }
+            }
+        })
+    </script>
     <title>再见旧时光的博客</title>
 </head>
 
 <body>
-<section id="blog_wrap">
-    <aside id="sideBar" class="sideBar nav col-md-3">
-        <div class="sideBar_head flex v-middle h-middle">
-            <div class="ruixi_info">
-                <h2 class="ruixi_logo"></h2>
-                <h4 class="ruixi_url"><a href="https://github.com/renruixi">https://github.com/renruixi</a></h4>
-            </div>
+<section id="ruixi_blog" class="ruixi_blog">
+    <section class="ruixi" id="ruixi">
+        <a href="https://github.com/renruixi"><img class="avatar" src="img/head.jpg" alt="" width="128" height="128"></a>
+
+        <h1>进击的 ruixi</h1>
+
+        <p>Work @ ShenZhen SmyFinancial, Web programming Font End <br> <a href="tpl/about">About Me</a>
+        </p>
+
+        <p style="height: 24px; line-height: 24px; margin: 15px 0;">
+            <img style="vertical-align: bottom; margin-right: 10px;"
+                 src="img/address.png">
+            ShenZhen · China
+        </p>
+
+        <p class="nav">
+            <a href="http://renruixi.github.io/renruixiBlog/">Home</a>
+            <a href="tpl/blog.html">Blog</a>
+            <a href="tpl/tech.html">Black Tech</a>
+            <a href="tpl/tags.html">Tags</a>
+            <a href="tpl/links.html">Links</a>
+            <a href="tpl/about.html">About</a>
+            <a href="tpl/service.html">Service</a>
+        </p>
+
+        <p style="margin-top: 20px">
+            <span>您的位置：<a href="javascript:;" class="w_location" id="w_location"></a></span>
+
+            <span>气温：<a href="javascript:;" class="w_temp" id="w_temp"></a></span>
+
+            <span>天气状况：<a href="javascript:;" class="w_desc" id="w_desc"></a></span>
+        </p>
+    </section>
+
+    <section id="weather_background" class="flex v-middle h-middle">
+        <div class="weather_info jumbotron" style="background-color: transparent">
+            <h3 class="w_location" id="w_location"></h3>
+
+            <h1 class="w_temp" id="w_temp"></h1>
+
+            <h3 class="w_desc" id="w_desc"></h3>
         </div>
-        <!--<ul class="sideBar_nav nav">-->
-            <!--<li><a href="tpl/JavaScript.html"><i class="glyphicon glyphicon-certificate sideBar_icon"></i>神奇的javascript</a>-->
-            <!--</li>-->
-            <!--<li><a href="tpl/nodejs.html"><i class="glyphicon glyphicon-send sideBar_icon"></i>无所不能nodejs</a></li>-->
-            <!--<li><a href="tpl/records.html"><i class="glyphicon glyphicon-pencil sideBar_icon"></i>陶冶情操的records</a></li>-->
-            <!--<li><a href="tpl/technology.html"><i class="glyphicon glyphicon-usd sideBar_icon"></i>多多益善的tech</a></li>-->
-            <!--<li><a href="tpl/css.html"><i class="glyphicon glyphicon-heart sideBar_icon"></i>变幻莫测的css</a></li>-->
-        <!--</ul>-->
-    </aside>
-
-    <main class="col-md-9" style="padding: 0;height: 100%;">
-        <section id="weather_background" class="flex v-middle h-middle">
-            <div class="weather_info jumbotron"  style="background-color: transparent">
-                <h3 class="w_location" id="w_location"></h3>
-                <h1 class="w_temp" id="w_temp"></h1>
-                <h3 class="w_desc" id="w_desc"></h3>
-
-                <ol class="breadcrumb" style="background-color: transparent">
-                    <li id="w_wind"></li>
-                    <li>PM2.5含量：<span id="w_pm25"></span></li>
-                    <li>空气质量：<span id="w_qlty"></span></li>
-                </ol>
-            </div>
-
-            <canvas class="w_canvas" id="w_canvas"></canvas>
-        </section>
-    </main>
+        <canvas class="w_canvas" id="w_canvas"></canvas>
+    </section>
 </section>
+
 <script src="js/main.js"></script>
 </body>
 </html>
