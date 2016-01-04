@@ -91,9 +91,14 @@ define(function (require, exports, module) {
         setWeatherData: function (result) {
             console.log(result);
             seajs.use("./js/pinyin.js", function (pinyin) {
-                w.location.text(pinyin.getFullChars(result.basic.city) + ', ' + pinyin.getFullChars(result.basic.cnty));
-                w.temperature.text(result.now.tmp + "℃");
-                w.weatherDescription.text(result.now.cond.txt);
+                try{
+                    w.location.text(pinyin.getFullChars(result.basic.city) + ', ' + pinyin.getFullChars(result.basic.cnty));
+                    w.temperature.text(result.now.tmp + "℃");
+                    w.weatherDescription.text(result.now.cond.txt);
+                }catch(e){
+                    console.log(e);
+
+                }
             });
             var time = Date.now() / 1000;
             //WeatherInfo.getDayOrNight(time, sunrise,sunset);

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-title" content="省呗"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <script>
+        ;
+        (function (win, lib) {
+            var doc = win.document;
+            var docEl = doc.documentElement;
+            var metaEl = doc.querySelector('meta[name="viewport"]');
+            var flexibleEl = doc.querySelector('meta[name="flexible"]');
+            var dpr = 0;
+            var scale = 0;
+            var tid;
+            var flexible = lib.flexible || (lib.flexible = {});
+
+            if (metaEl) {
+                console.warn('将根据已有的meta标签来设置缩放比例');
+                var match = metaEl.getAttribute('content').match(/initial\-scale=([\d\.]+)/);
+                if (match) {
+                    scale = parseFloat(match[1]);
+                    dpr = parseInt(1 / scale);
+                }
+            } else if (flexibleEl) {
+                var content = flexibleEl.getAttribute('content');
+                if (content) {
+                    var initialDpr = content.match(/initial\-dpr=([\d\.]+)/);
+                    var maximumDpr = content.match(/maximum\-dpr=([\d\.]+)/);
+                    if (initialDpr) {
+                        dpr = parseFloat(initialDpr[1]);
+                        scale = parseFloat((1 / dpr).toFixed(2));
+                    }
+                    if (maximumDpr) {
+                        dpr = parseFloat(maximumDpr[1]);
+                        scale = parseFloat((1 / dpr).toFixed(2));
+                    }
+                }
+            }
+
+            if (!dpr && !scale) {
+                var isAndroid = win.navigator.appVersion.match(/android/gi);
+                var isIPhone = win.navigator.appVersion.match(/iphone/gi);
+                var devicePixelRatio = win.devicePixelRatio;
+                if (isIPhone) {
+                    // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案
+                    if (devicePixelRatio >= 3 && (!dpr || dpr >= 3)) {
+                        dpr = 3;
+                    } else if (devicePixelRatio >= 2 && (!dpr || dpr >= 2)) {
+                        dpr = 2;
+                    } else {
+                        dpr = 1;
+                    }
+                } else {
+                    // 其他设备下，仍旧使用1倍的方案
+                    dpr = 1;
+                }
+                scale = 1 / dpr;
+            }
+
+            docEl.setAttribute('data-dpr', dpr);
+            if (!metaEl) {
+                metaEl = doc.createElement('meta');
+                metaEl.setAttribute('name', 'viewport');
+                metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+                if (docEl.firstElementChild) {
+                    docEl.firstElementChild.appendChild(metaEl);
+                } else {
+                    var wrap = doc.createElement('div');
+                    wrap.appendChild(metaEl);
+                    doc.write(wrap.innerHTML);
+                }
+            }
+
+            function refreshRem() {
+                var width = docEl.getBoundingClientRect().width;
+                if (width / dpr > 540) {
+                    width = 540 * dpr;
+                }
+                var rem = width / 10;
+                docEl.style.fontSize = rem + 'px';
+                flexible.rem = win.rem = rem;
+            }
+
+            win.addEventListener('resize', function () {
+                clearTimeout(tid);
+                tid = setTimeout(refreshRem, 300);
+            }, false);
+            win.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    clearTimeout(tid);
+                    tid = setTimeout(refreshRem, 300);
+                }
+            }, false);
+
+            refreshRem();
+
+            flexible.dpr = win.dpr = dpr;
+            flexible.refreshRem = refreshRem;
+            flexible.rem2px = function (d) {
+                var val = parseFloat(d) * this.rem;
+                if (typeof d === 'string' && d.match(/rem$/)) {
+                    val += 'px';
+                }
+                return val;
+            }
+            flexible.px2rem = function (d) {
+                var val = parseFloat(d) / this.rem;
+                if (typeof d === 'string' && d.match(/px$/)) {
+                    val += 'rem';
+                }
+                return val;
+            }
+
+        })(window, window['lib'] || (window['lib'] = {}));
+    </script>
+    <link rel="stylesheet" href="../../css/blog.css"/>
+    <script src="lib/sea.js"></script>
+    <script src="lib/jquery/jquery-2.1.4.min.js"></script>
+    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+    <script>
+        $(function () {
+            $(window).on("resize load", function () {
+                setHeight();
+            })
+
+            function setHeight() {
+                if ($("#ruixi").outerHeight() > $("html").outerHeight()) {
+                    $("#ruixi").height("100%");
+                    $("#weather_background").height($("#ruixi").outerHeight());
+                }
+            }
+        })
+    </script>
+    <title>再见旧时光的博客</title>
+</head>
+
+<body>
+<header class="mod-head">
+    <h1 class="mod-head__title"><a href="https://www.wpke.net">进击的ruixi</a></h1>
+
+    <div class="mod-head__logo">
+        <a href="https://github.com/renruixi">
+            <img class="avatar" src="../../img/head.jpg" alt="" width="26"
+                 height="26">
+        </a>
+    </div>
+    <nav class="mod-head__nav">
+        <ul id="menu-%e8%8f%9c%e5%8d%95" class="mod-head__ul">
+            <li id="menu-item-6" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6"><a
+                    href="https://github.com/renruixi">Home</a><span>·</span></li>
+            <li id="menu-item-16"
+                class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-8 current_page_item menu-item-16">
+                <a href="blog.html">Blog</a><span>·</span></li>
+            <li id="menu-item-21" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-21"><a
+                    href="tech.html">Black Tech</a><span>·</span></li>
+            <li id="menu-item-15" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15"><a
+                    href="tags.html">Tags</a><span>·</span></li>
+            <li id="menu-item-14" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14"><a
+                    href="links.html">Links</a><span>·</span></li>
+            <li id="menu-item-19" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19"><a
+                    href="about.html">About</a><span>·</span></li>
+            <li id="menu-item-121" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-121"><a
+                    href="service.html">Service</a></li>
+        </ul>
+    </nav>
+    <a id="right-panel-link" href="#right-panel"></a>
+
+    <div id="right-panel" class="panel">
+        <ul id="menu-%e8%8f%9c%e5%8d%95-1" class="ymod-head">
+            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6"><a
+                    href="https://github.com/renruixi">Home</a></li>
+            <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-8 current_page_item menu-item-16">
+                <a href="blog.html">Blog</a></li>
+            <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-21"><a
+                    href="tech.html">Black Tech</a></li>
+            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15"><a
+                    href="tags.html">Tags</a></li>
+            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14"><a
+                    href="links.html">Links</a></li>
+            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-19"><a
+                    href="about.html">About</a></li>
+            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-121"><a
+                    href="service.html">Service</a></li>
+        </ul>
+        <button id="close-panel-bt">Close</button>
+    </div>
+    <script src="../lib/slider.js"></script>
+    <script>
+        $('#right-panel-link').panelslider({side: 'right', duration: 200});
+        $('#close-panel-bt').click(function () {
+            $.panelslider.close();
+        });
+    </script>
+</header>
+<article class="mod-post mod-post__type-post">
+    <header>
+        <h1 class="mod-post__title">Mobile开发经验</h1>
+    </header>
+    <div class="mod-post__entry wzulli">
+        <p>在手Q开发过程中，遇到各种问题，解决之后沉淀如下，细分为：<br>
+
+            1、经验沉淀：开发过程怎么快速开发并在开发过程中可以兼顾到一些场景的出现<br>
+            2、疑难问题：一些机型出现的疑难问题，如和解决，以及对应的机型等问题详细描述
+        </p>
+
+
+        <div>
+            <p><strong>一、[机型兼容][IOS]position:fixed + input问题</strong></p>
+
+            <p><strong>1.&nbsp; 当input获得焦点并弹出虚拟键盘时，页面上position:fixed的元素的位置会错乱。</strong></p>
+
+            <p><strong>解决方案</strong></p>
+
+            <ol>
+                <li>用position:absolute模拟，这个效果不佳，在pc端hack ie6...只能呵呵</li>
+                <li>当input元素focus时，改成position:absolute，blur的时候再改回来</li>
+                <li>使用iscroll库</li>
+                <li>使用div内滚动</li>
+            </ol>
+        </div>
+
+        <div>
+            <p><strong>二、[机型兼容][IOS8]闪屏问题</strong></p>
+
+            <p><strong>1.&nbsp; 大面积的页面内刷新时出现，这种闪屏不是位置错乱的那种闪屏，具体原因不详</strong></p>
+
+            <p><strong>规避方案</strong></p>
+
+            <ol>
+                <li>提高刷新效率，尽量减少reflow和repaint</li>
+                <li>刷新之后不要改变页面的scroll状态，即不要从不能scroll刷到可以scroll，反之亦然（利用min-height让页面一直处于scroll状态）</li>
+                <li>不要刷新图片，利用localstorage缓存图片链接，命中的图片直接使用src，而不要用lazyload</li>
+            </ol>
+        </div>
+
+        <div>
+            <p><strong>三、Listview 太长引起的手机性能问题</strong></p>
+
+            <p><strong>1.&nbsp; 内存中存留的DOM结构太多，导致滚动的 Listview 后面，点击响应会延迟，甚至无响应。</strong></p>
+
+            <p><strong>解决方法</strong></p>
+
+            <ol>
+                <li>在 li 外面包裹一层，将前面页码的 dom 移除，同时设置外层容器的高度（这样不至于影响滚动条）</li>
+                <li>下拉滚动翻页过程中，对之前页码的数据进行隐藏。（向上滚动时，采取一定的策略将隐藏的数据显示）</li>
+                <li>不要刷新图片，利用localstorage缓存图片链接，命中的图片直接使用src，而不要用lazyload</li>
+            </ol>
+        </div>
+
+        <div>
+            <p><strong>四、弹出框中的滚动事件冒泡导致body也滚动</strong></p>
+
+            <p><strong>1.&nbsp; 当弹出框内容在滚动时，如果滚动到边界，会导致页面内容也会跟着滚动。</strong></p>
+
+            <p><strong>解决方法</strong></p>
+
+            <ol>
+                <li>在显示对话框时，将html和body的height都设置为100%，overflow都设置为hidden，然后在对话框关闭时将html和body的height与overflow属性都设置为auto。
+                    <p>打开对话框和关闭对话框后分别执行的函数：</p>
+                    <pre>function lockBody() {
+        $body.css({
+            height: "100%",
+            overflow: "hidden"
+        });
+
+        $html.css({
+            height: "100%",
+            overflow: "hidden"
+        });
+    }
+
+    function unlockBody() {
+        $body.css({
+            height: "auto",
+            overflow: "auto"
+        });
+        $html.css({
+            height: "auto",
+            overflow: "auto"
+        });
+    }</pre>
+                </li>
+
+                <li>
+                    在body内加一层div.scroll-wrapper，这个div包含页面的所有显示内容但不包含弹出框，.scroll-wrapper和html还有body的height都为100%，html和body的overflow为hidden，.scroll-wrapper的overflow为scroll。让.scroll-wrapper的div来控制页面内容的滚动。因为弹出框是通过fix布局不属于.scroll-wrapper的子元素，所以滚动不会冒泡到.scroll-wrapper上。
+                    <p>DOM结构：</p>
+                    <pre>
+<span><</span>body<span>></span>
+<span><</span>div class="scroll-wrapper"<span>></span>
+    <span><</span>div class="banner"<span>></span>
+        banner
+    <span><</span>/div<span>></span>
+    <span><</span>div class="content"<span>></span>
+        <span><</span>p>p <span><</span>/p<span>></span>
+    <span><</span>/div<span>></span>
+<span><</span>/div<span>></span>
+<span><</span>div id="mask"<span>></span>
+<span><</span>/div<span>></span>
+<span><</span>div class="dialog"<span>></span>
+    <span><</span>div class="dialog-head"<span>></span>
+
+    <span><</span>/div<span>></span>
+    <span><</span>div class="dialog-body"<span>></span>
+        <span><</span>ul>
+            <span><</span>li<span>></span>aaaaaaaaa<span><</span>/li<span>></span>
+        <span><</span>/ul<span>></span>
+    <span><</span>/div<span>></span>
+    <span><</span>div class="dialog-foot"<span>></span>
+        <span><</span>a href="javascript:;"<span>></span>确定<span><</span>/a<span>></span>
+        <span><</span>a class="close" href="javascript:;">关闭<span><</span>/a<span>></span>
+    <span><</span>/div<span>></span>
+<span><</span>/div<span>></span>
+<span><</span>script src="zepto.js" <span>></span><span><</span>/script<span>></span>
+<span><</span>script src="index.js" <span>></span><span><</span>/script<span>></span>
+<span><</span>/body<span>></span>
+                   </pre>
+                    <p>CSS</p>
+                    <pre>
+.scroll-wrapper {
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+                    </pre>
+                </li>
+                <li>不要刷新图片，利用localstorage缓存图片链接，命中的图片直接使用src，而不要用lazyload</li>
+            </ol>
+        </div>
+    </div>
+</article>
+</body>
+</html>
